@@ -1,0 +1,179 @@
+/*https://colorpalettes.net/color-palette-2090/
+periwinkle
+#fff5e8*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+html{
+    background-color: #fff5e8;
+}
+
+.navbar{
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.navbar-nav{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.nav-link{
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+}
+
+.logo{
+    height: 70px;
+    margin-bottom: 20px;
+}
+
+.nav-icons{
+    top: 100px;
+    position: fixed;
+    right: 80px;
+}
+
+.nav-icons i{
+    cursor: pointer;
+    margin-left: 20px;
+    color: #e7ac5ee1;
+}
+
+.landing-img{
+    margin-top: 20px;
+    margin-left: 5%;
+    width: 90%;
+    height: auto;
+    background: #c3cde6;
+}
+
+.categories-3{
+    margin-top: 30px;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 3%;
+    margin-bottom: 120px;
+}
+
+.categories-3 img, .cat-text{
+    width: 28vw;
+    margin-right: 3vw;
+    text-align: center;
+}
+
+.cat-text h2{
+    margin-top: 10px;
+}
+
+.cat-text p{
+    margin-top: 5px;
+}
+
+.offers{
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 200px;
+    display: flex;
+}
+
+.offers-pic{
+    position: absolute;
+    width: 90%;
+}
+
+.offers-text{
+    z-index: 10;
+    margin: 150px 10% 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.offers-text h2{
+    margin-bottom: 3%;
+}
+
+.line{
+    height: 1px;
+    width: 180px;
+    background-color: #a88ef1cc;
+    margin-bottom: 50px;
+}
+
+.offers-paragraph{
+    width: 500px;
+}
+
+.btn{
+    margin-top: 30px;
+    height: 35px;
+    width: 160px;
+    font-size: 18px;
+    background: #ffc9edf1;
+    border: 1px solid #8c7ba15b;
+    border-radius: 50px;
+    transition: all 0.7s ease-in-out;
+    color: rgba(0, 0, 0, 0.76);
+}
+
+.btn:hover{
+    box-shadow: 5px 3px 5px black;
+}
+
+.best-sellers{
+    padding: 10px;
+    height: 800px;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.best-sellers-grid{
+    margin-top: 40px;
+    display: grid;
+    width: 90%;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card{
+    height: 220px;
+    background-color: rgba(246, 230, 255, 0.329);
+    margin: 10px;
+    padding: 5px;
+}
+
+.food-best{
+    height: 80px;
+}
+
+@media all and (max-width:1000px){
+    .best-sellers-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media all and (max-width:700px){
+    .best-sellers-grid{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
