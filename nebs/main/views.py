@@ -8,5 +8,9 @@ def index(request):
 def booking(request):
     return HttpResponse("Book Page")
 
+def offers(request):
+    return HttpResponse("Offers Page")
+
 def greet(request, name):
     return HttpResponse(f"Hello, {name}!")
+
