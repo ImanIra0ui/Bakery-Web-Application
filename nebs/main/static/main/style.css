@@ -73,6 +73,9 @@ html{
     width: 28vw;
     margin-right: 3vw;
     text-align: center;
+    font-family: 'Philosopher', sans-serif;
+    font-size: 15px;
+    color: #6c3f21;
 }
 
 .cat-text h2{
@@ -81,6 +84,8 @@ html{
 
 .cat-text p{
     margin-top: 5px;
+    font-family: sans-serif;
+    font-size: 15px;
 }
 
 .offers{
@@ -103,10 +108,14 @@ html{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .offers-text h2{
     margin-bottom: 3%;
+    color: #6c3f21;
+    font-size: 45px;
+    font-family: 'Philosopher', sans-serif; 
 }
 
 .line{
