@@ -1,32 +1,26 @@
 from django.db import models
-from enum import Enum
-
-class ItemCategory(Enum):
-    CAKE = 'Cake',
-    BREAD = 'Bread',
-    PASTRY = 'Pastry',
-    COOKIES = 'Cookies',
-    MOROCCAN = 'Moroccan'
-
-    @classmethod
-    def ch(self):
-        r = []
-        for i in ItemCategory:
-            r.append((i.name, i.value))
-
-
 
 
 # Create your models here.
 
+#How a product will look like
 class Item(models.Model):
-    picture = models.ImageField(upload_to = 'main/static/main/imgs/item-pictures')
+    CATEGORY = (
+        ('Cake', 'Cake'),
+        ('Bread', 'Bread'),
+        ('Pastry', 'Pastry'),
+        ('Cookies', 'Cookies'),
+        ('Moroccan', 'Moroccan')
+    )
+    picture = models.ImageField(upload_to = 'main/static/item-pictures')
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     description = models.CharField(max_length = 250)
     category = models.CharField(
         max_length= 30,
-        choices = ItemCategory.ch()
+        choices = CATEGORY
     )
+    sold_qty = models.IntegerField()
+    available_qty = models.IntegerField()  
 
 

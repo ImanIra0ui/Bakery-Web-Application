@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>THIS WILL BE DISPLAY PAGE</h1>
+    {% for item in Items %}
+        <ul class="item-zone">
+            <li class="item-name">{{ item.name }}</li>
+            <!--To Check later how accurate this is-->
+            <li class="item-name"><img src="{% static item.picture|cut:'main/static' %}" alt="" srcset=""></li>
+            <li class="item-price">{{ item.price }}</li>
+            <li class="item-description">{{ item.description }}</li>
+        </ul>
+    {% endfor %}
+</body>
+</html>
