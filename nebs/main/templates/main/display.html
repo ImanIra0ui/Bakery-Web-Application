@@ -16,6 +16,7 @@
             <li class="item-name"><img src="{% static item.picture|cut:'main/static' %}" alt="" srcset=""></li>
             <li class="item-price">{{ item.price }}</li>
             <li class="item-description">{{ item.description }}</li>
+            <h1>{{item.category}}</h1>
         </ul>
     {% endfor %}
 </body>
