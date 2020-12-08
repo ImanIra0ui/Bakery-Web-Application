@@ -5,33 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
-    <title>Neb's Bakery</title>
+    <title>Landing Page</title>
 </head>
 <body>
-    <header class="landing-header">
+    <div class="top-bar">
+        <img src="{% static '/imgs/logo-png.png' %}" class="logo">
         <nav class="navbar">
-            <img src="{% static 'imgs/logo-png.png' %}" class="logo">
             <ul class="navbar-nav">
-                <li class="nav-link">BREAD</li>
-                <li class="nav-link">CAKES</li>
-                <li class="nav-link">PASTRY</li>
-                <li class="nav-link">COOKIES</li>
-                <li class="nav-link">MOROCCAN</li>
+                <li class="nav-link"><a href="#" target="_blank">BREAD</a></li>
+                <li class="nav-link"><a href="#" target="_blank">CAKES</a></li>
+                <li class="nav-link"><a href="#" target="_blank">PASTRY</a></li>
+                <li class="nav-link"><a href="#" target="_blank">COOKIES</a></li>
+                <li class="nav-link"><a href="#" target="_blank">MOROCCAN</a></li>
+                <li class=" nav-link-icons">
+                    <li class="nav-link"><a href="#" target="_blank"><i class="fas fa-search"></i></a></li>
+                    <li class="nav-link"><a href="#" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
+                </li>
             </ul>
         </nav>
-        <div class="nav-icons">
-            <i class="fas fa-search"></i>
-            <i class="fas fa-shopping-cart"></i>
-            <i class="fas fa-bars"></i>
-        </div>
-    </header>
-    <div class="landing-image">
-        <img src="{% static 'imgs/Screenshot 2020-11-09 at 16.52.51.png' %}" class="landing-img">
     </div>
+    <!--MAKE IT A CAROUSEL IF TIME LEFT-->
+    <div class="carousel">
+        
+    </div>
+
     <div class="categories-3">
         <div class="first-cat">
             <img src="{% static 'imgs/special-cakes.jpg' %}" class="pic-cat">
@@ -55,58 +53,93 @@
             </div>
         </div>
     </div>
-    <div class="offers">
-        <img src="{% static 'imgs/Screenshot 2020-11-09 at 16.57.20.png' %}" class="offers-pic">
-        <div class="offers-text">
-            <h2>Daily Offers</h2>
+
+    <div class="custom-shape-divider-bottom-1607388473">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+        </svg>
+    </div>
+
+    <div class="best-sellers-container">
+        <div class="best-sellers">
+            <h3>best deals for you</h3>
+            <h2>CUPS OF CUTENESS</h2>
             <div class="line"></div>
             <p class = "offers-paragraph">Eating raw fish didn't sound like a good idea. "It's a delicacy in Japan," didn't seem to make it any more appetizing. Raw fish is raw fish, delicacy or not.</p>
-            <button class="btn btn-purple">Explore</button>
+            <div class="best-sellers-grid">
+                <div class="card">
+                    <img src="{% static '/imgs/test.png' %}" class="food-best">
+                    <div class="item-name">Brunch</div>
+                    <div class="item-price">30DHS</div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+                <div class="card">
+                    <img src="{% static '/imgs/test.png' %}" class="food-best">
+                    <div class="item-name">Brunch</div>
+                    <div class="item-price">30DHS</div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+                <div class="card">
+                    <img src="{% static '/imgs/test.png' %}" class="food-best">
+                    <div class="item-name">Brunch</div>
+                    <div class="item-price">30DHS</div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+                <div class="card">
+                    <img src="{% static '/imgs/test.png' %}" class="food-best">
+                    <div class="item-name">Cookies</div>
+                    <div class="item-price">20DHS</div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+                <div class="card">
+                    <img src="{% static '/imgs/test.png' %}" class="food-best">
+                    <div class="item-name">Milkshake</div>
+                    <div class="item-price">25DHS</div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+                <div class="card">
+                    <img src="{% static '/imgs/test.png' %}" class="food-best">
+                    <div class="item-name">Mini Burgers</div>
+                    <div class="item-price">35DHS</div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+                <div class="card">
+                    <img src="{% static '/imgs/test.png' %}" class="food-best">
+                    <div class="item-name">Bread</div>
+                    <div class="item-price">7DHS</div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+                <div class="card">
+                    <img src="{% static '/imgs/test.png' %}" class="food-best">
+                    <div class="item-name">Macarons</div>
+                    <div class="item-price">50DHS</div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+            </div>
+    </div>
+    <div class="info">
+        <div class="info-item">
+            <i class="far fa-2x fa-clock"></i>
+            <h3>HOURS OF OPERATION</h2>
+            <span>Mon to Fri: 8:00am - 6:00pm</span>
+            <span>Sat to Sun: 8:00am - 1:00pm</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-2x fa-map-marked-alt"></i>
+            <h3>OUR LOCATION</h2>
+            <span>1234 First Avenue</span>
+            <span>New Haven, CT 06509</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-2x fa-mobile-alt"></i>
+            <h3>GET IN TOUCH</h2>
+            <span>Phone #: 203-123-6789</span>
+            <span>Email: contact@backery.com</span>
         </div>
     </div>
-    <div class="best-sellers">
-        <h3>best deals for you</h3>
-        <h2>CUPS OF CUTENESS</h2>
-        <div class="line"></div>
-        <p class = "offers-paragraph">Eating raw fish didn't sound like a good idea. "It's a delicacy in Japan," didn't seem to make it any more appetizing. Raw fish is raw fish, delicacy or not.</p>
-        <div class="best-sellers-grid">
-            <div class="card">
-                <img src="{% static 'imgs/png plate.png' %}" class="food-best">
-                <div class="item-name">Brunch</div>
-                <div class="item-price">30DHS</div>
-                <button class="btn">Add To Cart</button>
-            </div>
-            <div class="card">
-                <img src="{% static 'imgs/png-cookies.png' %}" class="food-best">
-                <div class="item-name">Cookies</div>
-                <div class="item-price">20DHS</div>
-                <button class="btn">Add To Cart</button>
-            </div>
-            <div class="card">
-                <img src="{% static 'imgs/png-milkshake.png' %}" class="food-best">
-                <div class="item-name">Milkshake</div>
-                <div class="item-price">25DHS</div>
-                <button class="btn">Add To Cart</button>
-            </div>
-            <div class="card">
-                <img src="{% static 'imgs/png-burgers.png' %}" class="food-best">
-                <div class="item-name">Mini Burgers</div>
-                <div class="item-price">35DHS</div>
-                <button class="btn">Add To Cart</button>
-            </div>
-            <div class="card">
-                <img src="{% static 'imgs/png-bread.png' %}" class="food-best">
-                <div class="item-name">Bread</div>
-                <div class="item-price">7DHS</div>
-                <button class="btn">Add To Cart</button>
-            </div>
-            <div class="card">
-                <img src="{% static 'imgs/png-macarons.png' %}" class="food-best">
-                <div class="item-name">Macarons</div>
-                <div class="item-price">50DHS</div>
-                <button class="btn">Add To Cart</button>
-            </div>
-        </div>
-    </div>
+    <footer>© Nebs Bakery 2020</footer>
+    
 </body>
 </html>
