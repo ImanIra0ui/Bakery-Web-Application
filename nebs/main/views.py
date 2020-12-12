@@ -6,9 +6,9 @@ from .models import Item
 def index(request):
     return render(request, "main/index.html")
 
-def display(request, cat):
+def display(request, cat):  
     #Get all Items from DB and Filter it based on category
-    all_items = Item.objects.filter(category = cat).order_by('name')
+    all_items = Item.objects.filter(category = cat)
     return render(request, "main/display.html", {'Items' : all_items})
 
 def booking(request):

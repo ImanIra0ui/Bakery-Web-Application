@@ -27,12 +27,21 @@
     </div>
 
     <div class="display-items-container">
+        <div class="select">
+            <select class="sort-dropdown">
+                <option selected="selected" disabled>Sort by:</option>
+                <option value="name">Product Name</option>
+                <option value="price-ascending">Ascending Price</option>
+                <option value="price-descending">Descending Price</option>
+            </select>
+        </div>
+  
         <div class="display-items-grid">
             {% for item in Items %}
             <ul class="item-zone">
                 <li class="item-image"><img src="{% static item.picture|cut:'main/static' %}" alt="" srcset=""></li>
                 <li class="item-name">{{ item.name }}</li>
-                <li class="item-price">{{ item.price }} MAD</li>
+                <li class="item-price">{{ item.price }}</li>
                 <li class="item-description">{{ item.description }}</li>
                 <button class="btn btn-display">Add to Cart</button>
             </ul>
@@ -62,5 +71,6 @@
         </div>
     </div>
     <footer>© Nebs Bakery 2020</footer>
+    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
