@@ -23,4 +23,6 @@ class Item(models.Model):
     sold_qty = models.IntegerField()
     available_qty = models.IntegerField()  
 
+    def __str__(self):
+        return self.category+ ': ' + self.name
 

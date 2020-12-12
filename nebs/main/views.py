@@ -7,9 +7,8 @@ def index(request):
     return render(request, "main/index.html")
 
 def display(request, cat):
-    #Get all Items from DB
-    #Figure out how to filter it based on category
-    all_items = Item.objects.filter(category = cat) 
+    #Get all Items from DB and Filter it based on category
+    all_items = Item.objects.filter(category = cat).order_by('name')
     return render(request, "main/display.html", {'Items' : all_items})
 
 def booking(request):
