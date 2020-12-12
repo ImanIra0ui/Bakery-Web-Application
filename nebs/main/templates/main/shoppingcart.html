@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="{% static 'shopping.css' %}">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <title>Shopping Cart</title>
+  <script src="{% static 'shop.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<div class="top-bar">
+    <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-link"><a href="{% url 'display' cat='Bread'%}" target="_blank">BREAD</a></li>
+            <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" target="_blank">CAKES</a></li>
+            <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}" target="_blank">PASTRY</a></li>
+            <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" target="_blank">COOKIES</a></li>
+            <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}" target="_blank">MOROCCAN</a></li>
+            <li class=" nav-link-icons">
+                <li class="nav-link"><a href="#" target="_blank"><i class="fas fa-search"></i></a></li>
+                <li class="nav-link"><a href="{% url 'shoppingcart:index' %}" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<body>
+  <main>
+      
+    <div class = "shopping-title">
+        SHOPPING CART
+    </div>
+
+    <div class="basket">
+      <div class="basket-labels">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Price</li>
+          <li class="quantity">Quantity</li>
+          <li class="subtotal">Subtotal</li>
+        </ul>
+      </div>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">4</span> x Eliza J</strong> Lace Sleeve Cuff Dress</h1>
+            <p><strong>Navy, Size 18</strong></p>
+            <p>Product Code - 232321939</p>
+          </div>
+        </div>
+        <div class="price">26.00</div>
+        <div class="quantity">
+          <input type="number" value="4" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">104.00</div>
+        <div class="remove">
+          <button>Remove</button>
+        </div>
+      </div>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
+            <p><strong>Navy, Size 10</strong></p>
+            <p>Product Code - 232321939</p>
+          </div>
+        </div>
+        <div class="price">26.00</div>
+        <div class="quantity">
+          <input type="number" value="1" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">26.00</div>
+        <div class="remove">
+          <button>Remove</button>
+        </div>
+      </div>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
+            <p><strong>Navy, Size 10</strong></p>
+            <p>Product Code - 232321939</p>
+          </div>
+        </div>
+        <div class="price">26.00</div>
+        <div class="quantity">
+          <input type="number" value="1" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">26.00</div>
+        <div class="remove">
+          <button>Remove</button>
+        </div>
+      </div>
+    </div>
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+        </div>
+        <div class="summary-delivery">
+          <select name="delivery-collection" class="summary-delivery-selection">
+              <option value="0" selected="selected">Select Collection or Delivery</option>
+             <option value="collection">Collection</option>
+             <option value="delivery">Delivery</option>
+          </select>
+        </div>
+        <div class="client-info">
+            <form>
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+                <label for="number">Phone number:</label>
+                <input type="text" id="number" name="number"><br><br>
+                <div class="summary-total">
+                    <div class="total-title">Total</div>
+                    <div class="total-value final-value" id="basket-total">130.00</div>
+                  </div>
+                <div class="summary-checkout">
+                    <input type="submit" value="Confirm Order" class="checkout-cta">
+            </div>
+            </form>
+        </div>        
+      </div>
+    </aside>
+  </main>
+  
+  <script src="{% static 'shop.js' %}"></script>
+</body>
+
+<div class="info">
+    <div class="info-item">
+        <i class="far fa-2x fa-clock"></i>
+        <h3>HOURS OF OPERATION</h2>
+        <span>Mon to Fri: 8:00am - 6:00pm</span>
+        <span>Sat to Sun: 8:00am - 1:00pm</span>
+    </div>
+    <div class="info-item">
+        <i class="fas fa-2x fa-map-marked-alt"></i>
+        <h3>OUR LOCATION</h2>
+        <span>1234 First Avenue</span>
+        <span>New Haven, CT 06509</span>
+    </div>
+    <div class="info-item">
+        <i class="fas fa-2x fa-mobile-alt"></i>
+        <h3>GET IN TOUCH</h2>
+        <span>Phone #: 203-123-6789</span>
+        <span>Email: contact@backery.com</span>
+    </div>
+</div>
+
+<footer>© Nebs Bakery 2020</footer>
+
+</html>
