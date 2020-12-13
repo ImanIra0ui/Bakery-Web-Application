@@ -286,7 +286,34 @@ footer{
 .select:hover::after {
     color: rgba(255, 232, 231, 0.863);
 }
-  
+
+.search-box{
+    background: rgba(153, 99, 97, 0.863);
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-top: -10px;
+}  
+
+.search-txt{
+    padding: 5px;
+    height: 30px;
+    color: white;
+    background: none;
+    border: none;
+}
+
+.search-btn{
+    background: none;
+    border: none;
+}
+
+.search-box-icon{
+    color: rgba(255, 255, 255, 0.693);
+}
+
+.search-txt::placeholder{
+    color:rgba(255, 255, 255, 0.493);
+}
 
 @media all and (max-width:1000px){
     .best-sellers-grid{

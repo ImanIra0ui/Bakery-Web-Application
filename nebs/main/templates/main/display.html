@@ -19,7 +19,14 @@
                 <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" target="_blank">COOKIES</a></li>
                 <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}" target="_blank">MOROCCAN</a></li>
                 <li class=" nav-link-icons">
-                    <li class="nav-link"><a href="#" target="_blank"><i class="fas fa-search"></i></a></li>
+                    <li class="nav-link"><a href="#" target="">
+                        <div class="search-box">
+                            <form action="/search" method="get">
+                                <input class="search-txt" type="search" name="query" id = "query" placeholder="Type to Search">
+                                <button type = "submit" class="search-btn"><i class="fas fa-search search-box-icon"></i></button>
+                            </form>
+                        </div>
+                    </a></li>
                     <li class="nav-link"><a href="{% url 'shoppingcart:index' %}" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
                 </li>
             </ul>

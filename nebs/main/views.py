@@ -10,6 +10,12 @@ def display(request, cat):
     #Get all Items from DB and Filter it based on category
     all_items = Item.objects.filter(category = cat)
     return render(request, "main/display.html", {'Items' : all_items})
+  
+def search(request):
+    query = request.GET['query']
+    all_items = Item.objects.filter(name__icontains = query)
+    params = {'Items' : all_items}
+    return render(request, "main/display.html", params)
 
 def booking(request):
     return HttpResponse("Book Page")
