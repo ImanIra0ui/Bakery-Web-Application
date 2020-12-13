@@ -18,7 +18,8 @@ def search(request):
     return render(request, "main/display.html", params)
 
 def booking(request):
-    return HttpResponse("Book Page")
+    return render(request, "main/booking.html")
+
 
 def offers(request):
     return HttpResponse("Offers Page")

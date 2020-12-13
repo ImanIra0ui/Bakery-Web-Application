@@ -315,6 +315,41 @@ footer{
     color:rgba(255, 255, 255, 0.493);
 }
 
+
+
+#container-booking{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(19, 1fr);
+    justify-items: stretch;
+    align-items: stretch;
+    height: 648px;
+    width: 80%;
+    margin-left: 10%;
+    
+}
+
+.box{
+    border: 1px solid rgba(250, 178, 178, 0.24);
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.time-slot{
+    background: rgba(153, 99, 97, 0.863);
+    cursor: pointer;
+}
+
+.time-name, .day-name{
+    border: 1px solid black;
+}
+
+.useless{
+    background-color: black;
+}
+
+
 @media all and (max-width:1000px){
     .best-sellers-grid{
         grid-template-columns: repeat(3, 1fr);
