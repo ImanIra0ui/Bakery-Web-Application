@@ -31,3 +31,15 @@ function createGrid(col, row){
 }
 
 createGrid(8, 19);
+
+bookingButton = document.querySelector('.send-booking-request');
+closeForm = document.querySelector('.close-container');
+bookingForm = document.querySelector('.container');
+
+bookingButton.addEventListener('click', ()=>{
+    bookingForm.style.display = "block";
+});
+
+closeForm.addEventListener('click', ()=>{
+    bookingForm.style.display = "none";
+});

@@ -36,6 +36,72 @@
     
     <!--Grid Code Goes Here-->
     <main id = "container-booking"></main>
+    <button class="send-booking-request">Send Request</button>
+
+    <!--Popup Form Starts Here-->
+    <div class="container">
+        <form id="contact" action="" method="post">
+          <i class="fas fa-times close-container"></i>
+          <h3>Make Booking Request</h3>
+          <h4>Contact us today, and get reply with in 24 hours!</h4>
+          <fieldset>
+            <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Your Email Address" type="email" tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Your Phone Number" type="tel" tabindex="3" pattern="[0-9]{10}" required>
+            <small>Format: 0634567890</small>
+          </fieldset>
+          <fieldset>
+            <div class="request-booking">
+                <select required class="booking-time-dropdown" >
+                    <option disabled selected hidden value="">Select Time:</option>
+                    <option value="6AM">6:00AM</option>
+                    <option value="7AM">7:00AM</option>
+                    <option value="8AM">8:00AM</option>
+                    <option value="9AM">9:00AM</option>
+                    <option value="10AM">10:00AM</option>
+                    <option value="11AM">11:00AM</option>
+                    <option value="12AM">12:00AM</option>
+                    <option value="1PM">1:00PM</option>
+                    <option value="2PM">2:00PM</option>
+                    <option value="3PM">3:00PM</option>
+                    <option value="4PM">4:00PM</option>
+                    <option value="5PM">5:00PM</option>
+                    <option value="6PM">6:00PM</option>
+                    <option value="7PM">7:00PM</option>
+                    <option value="8PM">8:00PM</option>
+                    <option value="9PM">9:00PM</option>
+                    <option value="10PM">10:00PM</option>
+                    <option value="11PM">11:00PM</option>
+                </select>
+            </div>
+          </fieldset>
+          <fieldset>
+            <div class="request-booking">
+                <select required class="booking-day-dropdown">
+                    <option disabled selected hidden value="">Select Day:</option>
+                    <option value="M">Monday</option>
+                    <option value="T">Tuesday</option>
+                    <option value="W">Wednesday</option>
+                    <option value="TR">Thursday</option>
+                    <option value="F">Friday</option>
+                    <option value="Sat">Saturday</option>
+                    <option value="Sun">Sunday</option>
+                </select>
+            </div>
+          </fieldset>
+          <fieldset>
+            <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+          </fieldset>
+          <fieldset>
+            <button name="submit" type="submit" id="booking-submit" data-submit="...Sending">Submit</button>
+          </fieldset>
+        </form>  
+    </div>
+    <!--Popup Form Ends Here-->
     
     <div class="info">
         <div class="info-item">
