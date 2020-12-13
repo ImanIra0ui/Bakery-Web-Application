@@ -58,6 +58,16 @@ h1 {
     border-top-width: 3px;
 }
 
+.quantity {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonadd{
+  background-color: #f1dfd1;
+  cursor:pointer;
+  padding: 10px;
+}
 
 input,
 button {
@@ -67,7 +77,8 @@ button {
 
 
 .checkout-cta:hover,
-.checkout-cta:focus {
+.checkout-cta:focus,
+.buttonadd:hover {
     color: rgba(245, 151, 148, 0.863);
     background-color: whitesmoke;
 }
@@ -231,12 +242,12 @@ li.subtotal:before {
 }
 
 .quantity-field {
-  background-color: whitesmoke;
-  border: 1px solid #aaa;
+  background-color: white;
   border-radius: 4px;
   font-size: 0.75rem;
-  padding: 10px;
-  width: 5rem;
+  padding: 10px;  
+  width: 3rem;
+  text-align: center;  
 }
 
 aside {
@@ -324,6 +335,12 @@ aside {
   font-size: 0.625rem;
   height: 34px;
   width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 @media screen and (max-width: 900px) {
