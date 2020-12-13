@@ -69,8 +69,8 @@ h1 {
   padding: 10px;
 }
 
-input,
-button {
+.txt, input[type=number],
+.checkout-cta, .buttonadd, .remove button {
   border: 0 none;
   outline: 0 none;
 }
@@ -88,8 +88,10 @@ button {
   width: 100%;
 }
 
-input,
-button,
+.txt, input[type=number],
+.checkout-cta,
+.buttonadd,
+.remove button,
 .basket,
 .basket-labels,
 .item,
@@ -338,8 +340,8 @@ aside {
   width: 100%;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -396,7 +398,7 @@ input::-webkit-inner-spin-button {
   }
 }
 
-input[type=text] {
+.txt {
     width: 100%;
     padding: 8px 20px;
     margin: 8px 0;
@@ -405,7 +407,7 @@ input[type=text] {
     border-radius: 4px;
 }
 
-input[type=text]:focus {
+.txt {
     border: 1.5px solid #555;
 }
 
