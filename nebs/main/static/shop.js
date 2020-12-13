@@ -6,8 +6,8 @@ $(document).ready(function() {
   $("#subMe").click(function(){
       var counter = parseInt($("#hiddenVal").val());
       counter--;
-      if (counter<0) {
-        $("#hiddenVal").val(0);
+      if (counter<1) {
+        $("#hiddenVal").val(1);
       }
       else {
         $("#hiddenVal").val(counter);
@@ -31,8 +31,8 @@ $(document).ready(function() {
   $("#subMe2").click(function(){
     var counter2 = parseInt($("#hiddenVal2").val());
     counter2--;
-    if (counter2<0) {
-      $("#hiddenVal2").val(0);
+    if (counter2<1) {
+      $("#hiddenVal2").val(1);
     }
     else {
       $("#hiddenVal2").val(counter2);
@@ -50,8 +50,8 @@ $("#addMe1").click(function(){
   $("#subMe1").click(function(){
     var counter1 = parseInt($("#hiddenVal1").val());
     counter1--;
-    if (counter1<0) {
-      $("#hiddenVal1").val(0);
+    if (counter1<1) {
+      $("#hiddenVal1").val(1);
     }
     else {
       $("#hiddenVal1").val(counter1);
