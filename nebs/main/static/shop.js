@@ -1,6 +1,67 @@
 /* Set values + misc */
 var fadeTime = 300;
 
+$(document).ready(function() {
+
+  $("#subMe").click(function(){
+      var counter = parseInt($("#hiddenVal").val());
+      counter--;
+      if (counter<1) {
+        $("#hiddenVal").val(1);
+      }
+      else {
+        $("#hiddenVal").val(counter);
+        $( '.quantity input' ).change();
+      }
+  });
+
+  $("#addMe").click(function(){
+    var counter = parseInt($("#hiddenVal").val());
+    counter++;
+    $("#hiddenVal").val(counter);
+    $( '.quantity input' ).change();
+  });
+
+  $("#addMe2").click(function(){
+  var counter2 = parseInt($("#hiddenVal2").val());
+  counter2++;
+    $("#hiddenVal2").val(counter2);
+    $( '.quantity input' ).change();
+  });
+  $("#subMe2").click(function(){
+    var counter2 = parseInt($("#hiddenVal2").val());
+    counter2--;
+    if (counter2<1) {
+      $("#hiddenVal2").val(1);
+    }
+    else {
+      $("#hiddenVal2").val(counter2);
+      $( '.quantity input' ).change();
+    }
+});
+
+$("#addMe1").click(function(){
+  var counter1 = parseInt($("#hiddenVal1").val());
+  counter1++;
+  
+  $("#hiddenVal1").val(counter1);
+  $( '.quantity input' ).change();
+});
+  $("#subMe1").click(function(){
+    var counter1 = parseInt($("#hiddenVal1").val());
+    counter1--;
+    if (counter1<1) {
+      $("#hiddenVal1").val(1);
+    }
+    else {
+      $("#hiddenVal1").val(counter1);
+      $( '.quantity input' ).change();
+    }
+});
+
+
+});
+
 /* Assign actions */
 $('.quantity input').change(function() {
   updateQuantity(this);
@@ -58,11 +119,11 @@ function updateQuantity(quantityInput) {
 
   /* Update line price display and recalc cart totals */
   productRow.children('.subtotal').each(function() {
-    $(this).fadeOut(fadeTime, function() {
+    /*$(this).fadeOut(fadeTime, function() {*/
       $(this).text(linePrice.toFixed(2));
       recalculateCart();
       $(this).fadeIn(fadeTime);
-    });
+    /*});*/
   });
 
   productRow.find('.item-quantity').text(quantity);

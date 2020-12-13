@@ -60,27 +60,13 @@
         </div>
         <div class="price">26.00</div>
         <div class="quantity">
-          <input type="number" value="4" min="1" class="quantity-field">
-        </div>
-        <div class="subtotal">104.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-      </div>
-      <div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
-            <p><strong>Navy, Size 10</strong></p>
-            <p>Product Code - 232321939</p>
-          </div>
-        </div>
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
+          <button class="buttonadd" id="subMe1">
+            -
+          </button>
+          <input type="number" id="hiddenVal1" value="1" min="1" class="quantity-field">
+          <button class="buttonadd" id="addMe1">
+            +
+          </button>
         </div>
         <div class="subtotal">26.00</div>
         <div class="remove">
@@ -100,7 +86,39 @@
         </div>
         <div class="price">26.00</div>
         <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
+          <button class="buttonadd" id="subMe2">
+            -
+          </button>
+          <input type="number" id="hiddenVal2" value="1" min="1" class="quantity-field">
+          <button class="buttonadd" id="addMe2">
+            +
+          </button>
+        </div>
+        <div class="subtotal">26.00</div>
+        <div class="remove">
+          <button>Remove</button>
+        </div>
+      </div>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
+            <p><strong>Navy, Size 10</strong></p>
+            <p>Product Code - 232321939</p>
+          </div>
+        </div>
+        <div class="price">26.00</div>
+        <div class="quantity">
+          <button class="buttonadd" id="subMe">
+            -
+          </button>
+          <input type="number" id="hiddenVal" value="1" min="1" class="quantity-field" id="field">
+          <button class="buttonadd" id="addMe">
+            +
+          </button>
         </div>
         <div class="subtotal">26.00</div>
         <div class="remove">
@@ -113,26 +131,26 @@
         <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
         <div class="summary-subtotal">
           <div class="subtotal-title">Subtotal</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">26.00</div>
         </div>
         <div class="summary-delivery">
-          <select name="delivery-collection" class="summary-delivery-selection">
-              <option value="0" selected="selected">Select Collection or Delivery</option>
-             <option value="collection">Collection</option>
+          <select id="myselect" name="delivery-collection" class="summary-delivery-selection">
+              <option value="0" selected="selected">Select Pickup or Delivery</option>
+             <option value="collection">Pickup</option>
              <option value="delivery">Delivery</option>
           </select>
         </div>
         <div class="client-info">
             <form>
                 <label for="fname">First name:</label>
-                <input type="text" id="fname" name="fname"><br><br>
+                <input type="text" id="fname" name="fname" required><br><br>
                 <label for="lname">Last name:</label>
-                <input type="text" id="lname" name="lname"><br><br>
+                <input type="text" id="lname" name="lname" required><br><br>
                 <label for="number">Phone number:</label>
-                <input type="text" id="number" name="number"><br><br>
+                <input type="text" id="number" name="number" required><br><br>
                 <div class="summary-total">
                     <div class="total-title">Total</div>
-                    <div class="total-value final-value" id="basket-total">130.00</div>
+                    <div class="total-value final-value" id="basket-total">26.00</div>
                   </div>
                 <div class="summary-checkout">
                     <input type="submit" value="Confirm Order" class="checkout-cta">
