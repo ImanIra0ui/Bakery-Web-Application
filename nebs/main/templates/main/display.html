@@ -50,7 +50,13 @@
                 <li class="item-name">{{ item.name }}</li>
                 <li class="item-price">{{ item.price }}</li>
                 <li class="item-description">{{ item.description }}</li>
-                <button class="btn btn-display" >Add to Cart</button>
+                <form method="POST" action="{% url 'shoppingcart:index' %}">
+                   <!-- <input type="text" value ='{{ item.id }}'>-->
+                   {% csrf_token %}
+                   <input type="hidden" name="product" value='{{ item.id }}'>
+                   <!--{{ form }}-->
+                <input type ="submit" class="btn btn-display" value="Add to Cart"></input>
+                </form>
             </ul>
             {% endfor %}
         </div>

@@ -1,65 +1,43 @@
 /* Set values + misc */
 var fadeTime = 300;
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 
-  $("#subMe").click(function(){
-      var counter = parseInt($("#hiddenVal").val());
-      counter--;
-      if (counter<1) {
-        $("#hiddenVal").val(1);
-      }
-      else {
-        $("#hiddenVal").val(counter);
-        $( '.quantity input' ).change();
-      }
-  });
+/*$(".buttonadd").click(function(){
+  alert('button clicked');
+});*/
 
-  $("#addMe").click(function(){
-    var counter = parseInt($("#hiddenVal").val());
-    counter++;
-    $("#hiddenVal").val(counter);
-    $( '.quantity input' ).change();
-  });
 
-  $("#addMe2").click(function(){
-  var counter2 = parseInt($("#hiddenVal2").val());
-  counter2++;
-    $("#hiddenVal2").val(counter2);
-    $( '.quantity input' ).change();
-  });
-  $("#subMe2").click(function(){
-    var counter2 = parseInt($("#hiddenVal2").val());
-    counter2--;
-    if (counter2<1) {
-      $("#hiddenVal2").val(1);
-    }
-    else {
-      $("#hiddenVal2").val(counter2);
-      $( '.quantity input' ).change();
-    }
-});
-
-$("#addMe1").click(function(){
-  var counter1 = parseInt($("#hiddenVal1").val());
-  counter1++;
-  
-  $("#hiddenVal1").val(counter1);
-  $( '.quantity input' ).change();
-});
-  $("#subMe1").click(function(){
-    var counter1 = parseInt($("#hiddenVal1").val());
+/*$(".buttonadd").click(function(){
+    var counter1 = parseInt($('.quantity input').val());
     counter1--;
     if (counter1<1) {
-      $("#hiddenVal1").val(1);
+      $('.quantity input').val(100);
     }
     else {
-      $("#hiddenVal1").val(counter1);
+      $('.quantity input').val(100);
       $( '.quantity input' ).change();
     }
 });
+*/
 
+$('.buttonsub').click(function() {
+  var $n = $(this).parent(".quantity").find(".quantity-field");
 
+	  var QtyVal = Number($n.val());
+	    if (QtyVal > 1) {
+		    $n.val(QtyVal-1);
+    }
+    updateSumItems();
+    updateQuantity($n);
+});
+
+$('.buttonadd').click(function() {
+  var $n = $(this).parent(".quantity").find(".quantity-field");
+  
+    $n.val(Number($n.val())+1 );
+    updateSumItems();
+    updateQuantity($n);
 });
 
 /* Assign actions */
@@ -74,6 +52,60 @@ $('.remove button').click(function() {
 $(document).ready(function() {
   updateSumItems();
 });
+
+/*function addQuantity(quantityInput) {
+  /* Calculate line price 
+  var productRow = $(quantityInput).parent(".quantity").find(".quantity-field");
+  var price = parseFloat(productRow.children('.price').text());
+  var quantity = $(quantityInput).val();
+    quantity++;
+    $(quantityInput).val(quantity);
+    $(quantityInput).change();
+    productRow.find('.quantity-field').val(quantity);
+
+  var quantity = $(quantityInput).val();
+  var linePrice = price * quantity;
+
+  /* Update line price display and recalc cart totals 
+  productRow.children('.subtotal').each(function() {
+    $(this).fadeOut(fadeTime, function() {
+      $(this).text(linePrice.toFixed(2));
+      recalculateCart();
+      $(this).fadeIn(fadeTime);
+    });
+  });
+  
+  productRow.find('.item-quantity').text(quantity);
+  updateSumItems();
+}*/
+
+/*function subQuantity(quantityInput) {
+  /* Calculate line price 
+  var productRow = $(quantityInput).parent().parent();
+  var price = parseFloat(productRow.children('.price').text());
+  var quantity = $(quantityInput).val();
+    quantity--;
+
+      
+      $(quantityInput).val(quantity);
+      $(quantityInput).change();
+      productRow.find('.quantity-field').val(quantity);
+    
+  var quantity = $(quantityInput).val();
+  var linePrice = price * quantity;
+
+  /* Update line price display and recalc cart totals 
+  productRow.children('.subtotal').each(function() {
+    $(this).fadeOut(fadeTime, function() {
+      $(this).text(linePrice.toFixed(2));
+      recalculateCart();
+      $(this).fadeIn(fadeTime);
+    });
+  });
+  
+  productRow.find('.item-quantity').text(quantity);
+  updateSumItems();
+}*/
 
 /* Recalculate cart */
 function recalculateCart(onlyTotal) {
@@ -119,11 +151,11 @@ function updateQuantity(quantityInput) {
 
   /* Update line price display and recalc cart totals */
   productRow.children('.subtotal').each(function() {
-    /*$(this).fadeOut(fadeTime, function() {*/
+    $(this).fadeOut(fadeTime, function() {
       $(this).text(linePrice.toFixed(2));
       recalculateCart();
       $(this).fadeIn(fadeTime);
-    /*});*/
+    });
   });
 
   productRow.find('.item-quantity').text(quantity);

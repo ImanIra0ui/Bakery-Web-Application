@@ -63,14 +63,21 @@ h1 {
   flex-direction: row;
 }
 
-.buttonadd{
+
+.buttonadd,
+.buttonsub {
+    position: right;
+}
+
+.buttonadd, 
+.buttonsub{
   background-color: #f1dfd1;
   cursor:pointer;
   padding: 10px;
 }
 
 .txt, input[type=number],
-.checkout-cta, .buttonadd, .remove button {
+.checkout-cta, .buttonadd, .buttonsub, .remove button {
   border: 0 none;
   outline: 0 none;
 }
@@ -78,7 +85,8 @@ h1 {
 
 .checkout-cta:hover,
 .checkout-cta:focus,
-.buttonadd:hover {
+.buttonadd:hover,
+.buttonsub:hover {
     color: rgba(245, 151, 148, 0.863);
     background-color: whitesmoke;
 }
@@ -91,6 +99,7 @@ h1 {
 .txt, input[type=number],
 .checkout-cta,
 .buttonadd,
+.buttonsub,
 .remove button,
 .basket,
 .basket-labels,

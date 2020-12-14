@@ -54,33 +54,35 @@
           <li class="subtotal">Subtotal</li>
         </ul>
       </div>
+      {% for Id in Item_id %}
       <div class="basket-product">
         <div class="item">
           <div class="product-image">
-            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
+            <img src="{% static Id.picture|cut:'main/static' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame" srcset="">
           </div>
           <div class="product-details">
-            <h1><strong><span class="item-quantity">4</span> x Eliza J</strong> Lace Sleeve Cuff Dress</h1>
-            <p><strong>Navy, Size 18</strong></p>
-            <p>Product Code - 232321939</p>
+            <h1><strong><span class="item-quantity">{{ quant }}</span> x </strong>  {{ Id.name }} </h1>
+            <p><strong>{{ Id.description }}</strong></p>
+            <p>{{ Id.category }}</p>
           </div>
         </div>
-        <div class="price">26.00</div>
+        <div class="price">{{ Id.price }}</div>
         <div class="quantity">
-          <button class="buttonadd" id="subMe1">
+          <button class="buttonsub">
             -
           </button>
-          <input type="number" id="hiddenVal1" value="1" min="1" class="quantity-field">
-          <button class="buttonadd" id="addMe1">
+          <input type="number" id="MEH" value="1" min="1" class="quantity-field">
+          <button class="buttonadd">
             +
           </button>
         </div>
-        <div class="subtotal">26.00</div>
+        <div class="subtotal">{{ Id.price }}</div>
         <div class="remove">
           <button>Remove</button>
         </div>
       </div>
-      <div class="basket-product">
+      {% endfor %}
+      <!--<div class="basket-product">
         <div class="item">
           <div class="product-image">
             <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
@@ -105,8 +107,8 @@
         <div class="remove">
           <button>Remove</button>
         </div>
-      </div>
-      <div class="basket-product">
+      </div>-->
+      <!--<div class="basket-product">
         <div class="item">
           <div class="product-image">
             <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
@@ -131,14 +133,14 @@
         <div class="remove">
           <button>Remove</button>
         </div>
-      </div>
+      </div>-->
     </div>
     <aside>
       <div class="summary">
         <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
         <div class="summary-subtotal">
           <div class="subtotal-title">Subtotal</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">26.00</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">{{ total }}</div>
         </div>
         <div class="summary-delivery">
           <select id="myselect" name="delivery-collection" class="summary-delivery-selection">
@@ -157,7 +159,7 @@
                 <input class="txt" type="text" id="number" name="number" required><br><br>
                 <div class="summary-total">
                     <div class="total-title">Total</div>
-                    <div class="total-value final-value" id="basket-total">26.00</div>
+                    <div class="total-value final-value" id="basket-total">{{ total }}</div>
                   </div>
                 <div class="summary-checkout">
                     <input type="submit" value="Confirm Order" class="checkout-cta">
