@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Item
+from .models import Item, Booking
 
 # Create your views here.
 def index(request):
@@ -18,6 +18,14 @@ def search(request):
     return render(request, "main/display.html", params)
 
 def booking(request):
+    if request.method == 'POST':
+        name_value = request.POST['name']
+        email_value = request.POST['email']
+        phone_value = request.POST['phone']
+        time_value = request.POST['time']
+        day_value = request.POST['day']
+        description_value = request.POST['description']
+        b = Booking.objects.create(name = name_value, email = email_value, phone = phone_value, day = day_value, time = time_value, description = description_value)
     return render(request, "main/booking.html")
 
 

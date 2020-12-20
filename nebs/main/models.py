@@ -30,12 +30,14 @@ class Item(models.Model):
 #How a booking will look like
 class Booking(models.Model):
     name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
+    email = models.EmailField()
     phone = models.CharField(max_length=100)
-    #Improve how day and time are taken if time left
     day = models.CharField(max_length=100)
     time = models.CharField(max_length=100)
     description = models.CharField(max_length = 250)
+
+    def __str__(self):
+        return self.name+ ': ' + self.day + " " + self.time
 
 
 
