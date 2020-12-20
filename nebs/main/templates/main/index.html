@@ -10,14 +10,16 @@
 </head>
 <body>
     <div class="top-bar">
-        <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+        <a href="{% url 'index' %}">
+            <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+        </a>
         <nav class="navbar">
             <ul class="navbar-nav">
-                <li class="nav-link"><a href="{% url 'display' cat='Bread'%}" target="_blank">BREAD</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" target="_blank">CAKES</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}" target="_blank">PASTRY</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" target="_blank">COOKIES</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}" target="_blank">MOROCCAN</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Bread'%}" >BREAD</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" >CAKES</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">PASTRY</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" >COOKIES</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MOROCCAN</a></li>
                 <li class=" nav-link-icons">
                     <li class="nav-link"><a href="#" target="">
                         <div class="search-box">

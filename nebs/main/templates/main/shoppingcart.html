@@ -15,14 +15,16 @@
 </head>
 
 <div class="top-bar">
+  <a href="{% url 'index' %}">
   <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+  </a>
   <nav class="navbar">
       <ul class="navbar-nav">
-          <li class="nav-link"><a href="{% url 'display' cat='Bread'%}" target="_blank">BREAD</a></li>
-          <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" target="_blank">CAKES</a></li>
-          <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}" target="_blank">PASTRY</a></li>
-          <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" target="_blank">COOKIES</a></li>
-          <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}" target="_blank">MOROCCAN</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Bread'%}">BREAD</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Cake'%}">CAKES</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">PASTRY</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}">COOKIES</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MOROCCAN</a></li>
           <li class=" nav-link-icons">
               <li class="nav-link"><a href="#" target="">
                   <div class="search-box">
@@ -58,82 +60,32 @@
       <div class="basket-product">
         <div class="item">
           <div class="product-image">
-            <img src="{% static Id.picture|cut:'main/static' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame" srcset="">
+            <img src="{% static Id.item.picture|cut:'main/static' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame" srcset="">
           </div>
           <div class="product-details">
-            <h1><strong><span class="item-quantity">{{ quant }}</span> x </strong>  {{ Id.name }} </h1>
-            <p><strong>{{ Id.description }}</strong></p>
-            <p>{{ Id.category }}</p>
+            <h1><strong><span class="item-quantity">{{ Id.quantity }}</span> x </strong>  {{ Id.item.name }} </h1>
+            <p><strong>{{ Id.item.description }}</strong></p>
+            <p>{{ Id.item.category }}</p>
           </div>
         </div>
-        <div class="price">{{ Id.price }}</div>
+        <div class="price">{{ Id.item.price }}</div>
         <div class="quantity">
           <button class="buttonsub">
             -
           </button>
-          <input type="number" id="MEH" value="1" min="1" class="quantity-field">
+          <input type="number" id="MEH" value="{{ Id.quantity }}" min="1" class="quantity-field">
           <button class="buttonadd">
             +
           </button>
         </div>
-        <div class="subtotal">{{ Id.price }}</div>
+        <div class="subtotal">{{ Id.subtotal }}</div>
         <div class="remove">
           <button>Remove</button>
         </div>
       </div>
+      {% empty %}
+      <li> No items. </li>
       {% endfor %}
-      <!--<div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
-            <p><strong>Navy, Size 10</strong></p>
-            <p>Product Code - 232321939</p>
-          </div>
-        </div>
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <button class="buttonadd" id="subMe2">
-            -
-          </button>
-          <input type="number" id="hiddenVal2" value="1" min="1" class="quantity-field">
-          <button class="buttonadd" id="addMe2">
-            +
-          </button>
-        </div>
-        <div class="subtotal">26.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-      </div>-->
-      <!--<div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
-            <p><strong>Navy, Size 10</strong></p>
-            <p>Product Code - 232321939</p>
-          </div>
-        </div>
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <button class="buttonadd" id="subMe">
-            -
-          </button>
-          <input type="number" id="hiddenVal" value="1" min="1" class="quantity-field" id="field">
-          <button class="buttonadd" id="addMe">
-            +
-          </button>
-        </div>
-        <div class="subtotal">26.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-      </div>-->
     </div>
     <aside>
       <div class="summary">

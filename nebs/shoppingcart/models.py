@@ -13,14 +13,25 @@ class client (models.Model):
         return self.FirstName + ' ' + self.LastName
 
 
-class order (models.Model):
-    client = models.ForeignKey(client, on_delete=models.CASCADE, null=True)    
+class OrderItem(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
+    quantity = models.IntegerField(default=1)
+    session = models.CharField(max_length = 2000)
     is_ordered = models.BooleanField(default=False)
-    products = models.ManyToManyField(Item)
-    date_ordered = models.DateTimeField(auto_now=True)
+    subtotal = models.FloatField(default=1)
 
     def __str__(self):
-        return '{0} - {1}'.format(self.client, self.date_ordered)
+        return f"{self.quantity} of {self.item.name}"
+
+class Order (models.Model):
+    client = models.ForeignKey(client, on_delete=models.CASCADE, null=True)    
+    is_ordered = models.BooleanField(default=False)
+    products = models.ManyToManyField(OrderItem)
+    date_ordered = models.DateTimeField(auto_now=True)
+    session = models.CharField(max_length = 2000)
+
+    def __str__(self):
+        return '{0} - {1}'.format(self.session, self.date_ordered)
 
     def get_cart_items(self):
         return self.products.all()
