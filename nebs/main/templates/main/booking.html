@@ -103,6 +103,9 @@
         </form>  
     </div>
     <!--Popup Form Ends Here-->
+    {% for message in messages %}
+    <script>alert("{{ message }}");</script>
+    {% endfor %}
     
     <div class="info">
         <div class="info-item">

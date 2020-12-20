@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Item, Booking
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -25,7 +26,10 @@ def booking(request):
         time_value = request.POST['time']
         day_value = request.POST['day']
         description_value = request.POST['description']
-        b = Booking.objects.create(name = name_value, email = email_value, phone = phone_value, day = day_value, time = time_value, description = description_value)
+        if Booking.objects.filter(day = day_value, time = time_value).exists() == False:
+            b = Booking.objects.create(name = name_value, email = email_value, phone = phone_value, day = day_value, time = time_value, description = description_value)
+        else:
+            messages.error(request,'The time slot selected is already taken')
     return render(request, "main/booking.html")
 
 
