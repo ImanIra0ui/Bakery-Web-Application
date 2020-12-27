@@ -5,4 +5,5 @@ app_name = "shoppingcart"
 
 urlpatterns = [
    path("cart/", views.index, name = "index"),
+   path("confirmation/", views.confirm, name="confirm")
 ]

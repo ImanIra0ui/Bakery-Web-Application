@@ -102,7 +102,8 @@
           </select>
         </div>
         <div class="client-info">
-            <form>
+            <form method="POST" action="{% url 'shoppingcart:confirm' %}">
+              {% csrf_token %}
                 <label for="fname">First name:</label>
                 <input class="txt" type="text" id="fname" name="fname" required><br><br>
                 <label for="lname">Last name:</label>

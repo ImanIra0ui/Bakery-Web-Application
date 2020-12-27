@@ -1,8 +1,57 @@
 from django.shortcuts import render, get_object_or_404
 from django import forms
 from main.models import Item
-from shoppingcart.models import OrderItem, Order
+from shoppingcart.models import OrderItem, Order, client
+from datetime import datetime
+
 # Create your views here.
+
+def confirm (request):
+    if not request.session.session_key:
+        request.session.save()
+    if not request.session.session_key:
+        request.session.save()
+
+    order_qs = Order.objects.filter(session=request.session.session_key+"1", is_ordered=False)
+
+    if order_qs.exists():
+        order = order_qs[0]   
+        if request.method=="POST":
+            FirstName = request.POST['fname']
+            LastName = request.POST['lname']
+            Number = request.POST['number']
+        
+            client2 = client.objects.create(FirstName = FirstName, LastName = LastName, Number = Number)
+            order.client = client2
+            order.is_ordered = True
+            order.save()
+
+            now = datetime.now()
+            now1 = now.strftime("%m/%d/%Y, %H:%M:%S")
+
+            order.session = now1 + request.session.session_key+"1"
+            order.save()
+
+            for i in order.products.all():
+                i. session = request.session.session_key+ "1" + now1,
+                i.is_ordered = True
+                i.save()
+            
+            
+
+        return render(request, "main/shoppingcart.html", {
+                    "Item_id": [],
+                    "total": 0
+                })
+
+        
+
+    else:
+        return render(request, "main/shoppingcart.html", {
+                    "Item_id": [],
+                    "total": 0
+                })
+
 
 
 def index(request):
