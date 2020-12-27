@@ -7,4 +7,5 @@ from .models import *
 
 #registering Item 
 admin.site.register(Item)
+#registering Booking
 admin.site.register(Booking)

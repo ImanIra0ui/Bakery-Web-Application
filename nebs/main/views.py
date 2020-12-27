@@ -2,6 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Item, Booking
 from django.contrib import messages
+from django.core import serializers
+from json import dumps 
+import json
+
+
 
 # Create your views here.
 def index(request):
@@ -30,7 +35,9 @@ def booking(request):
             b = Booking.objects.create(name = name_value, email = email_value, phone = phone_value, day = day_value, time = time_value, description = description_value)
         else:
             messages.error(request,'The time slot selected is already taken')
-    return render(request, "main/booking.html")
+    #Serializing Booking
+    book = json.loads(serializers.serialize('json', Booking.objects.all(), fields=('day','time')))
+    return render(request, "main/booking.html", {'data': json.dumps(book)})
 
 
 def offers(request):

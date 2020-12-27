@@ -1,8 +1,10 @@
 function createGrid(col, row){
-    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
     d_cnt = 0;
-    times = ["6:00AM","7:00AM","8:00AM","9:00AM","10:00AM","11:00AM","12:00AM","1:00PM","2:00PM",
-    "3:00PM","4:00PM","5:00PM","6:00PM","7:00PM","8:00PM","9:00PM","10:00PM","11:00PM","00:00PM",];
+    times = ["6AM","7AM","8AM","9AM","10AM","11AM","12AM","1PM","2PM",
+    "3PM","4PM","5PM","6PM","7PM","8PM","9PM","10PM","11PM"];
+    timesp = ["6:00AM","7:00AM","8:00AM","9:00AM","10:00AM","11:00AM","12:00AM","1:00PM","2:00PM",
+    "3:00PM","4:00PM","5:00PM","6:00PM","7:00PM","8:00PM","9:00PM","10:00PM","11:00PM"];
     t_cnt = 0;
     document.getElementById('container-booking').innerHTML = "";
     for(let i = 0; i < col; i++){
@@ -18,10 +20,11 @@ function createGrid(col, row){
                d_cnt++;
            }else if(i == 0){
                box.className = "box time-name";
-               box.innerHTML = times[t_cnt];
+               box.innerHTML = timesp[t_cnt];
                t_cnt++;
            }else{
-               box.className = "box time-slot";
+               str = days[i-1] + "-" + times[j-1];
+               box.className = "box time-slot " + str;
            }
            
            col.appendChild(box);
@@ -43,3 +46,5 @@ bookingButton.addEventListener('click', ()=>{
 closeForm.addEventListener('click', ()=>{
     bookingForm.style.display = "none";
 });
+
+

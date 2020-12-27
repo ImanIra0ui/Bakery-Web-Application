@@ -129,5 +129,18 @@
     </div>
     <footer>© Nebs Bakery 2020</footer>
     <script src="{% static 'booking.js' %}"></script>
+    <script> 
+        window.onload = function(){
+            let data = JSON.parse("{{data|escapejs}}"); 
+            console.log(data);
+            let len = data.length
+            for(i = 0; i < len; i++){
+                str = "."+data[i].fields.day +"-"+ data[i].fields.time;
+                console.log(str);
+                timeSlot = document.querySelector(str);
+                timeSlot.style.backgroundColor = "red";
+            }
+        }
+    </script>
 </body>
 </html>
