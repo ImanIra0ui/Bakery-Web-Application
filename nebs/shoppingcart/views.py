@@ -20,10 +20,27 @@ def confirm (request):
             FirstName = request.POST['fname']
             LastName = request.POST['lname']
             Number = request.POST['number']
+            Address = request.POST['address']
+            Total = request.POST.get('ttl', False)
         
-            client2 = client.objects.create(FirstName = FirstName, LastName = LastName, Number = Number)
+            client2 = client.objects.create(FirstName = FirstName, LastName = LastName, Number = Number, Address=Address)
             order.client = client2
             order.is_ordered = True
+            order.save()
+
+            x=0
+            
+            for i in order.products.all():
+                x += (i.item.price)*(i.quantity)
+
+            if(Address == " "):
+                order.delivery = False
+                order.total = x
+            else:
+                x = float(Total) + 15.0 
+                order.delivery = True
+                order.total = x
+            
             order.save()
 
             now = datetime.now()
@@ -38,7 +55,7 @@ def confirm (request):
                 i.save()
             
             
-
+     
         return render(request, "main/shoppingcart.html", {
                     "Item_id": [],
                     "total": 0
@@ -113,6 +130,11 @@ def index(request):
 
         if order_qs.exists():
             order = order_qs[0]
+
+            total = 0
+
+            for i in order.products.all():
+                total += (i.item.price)*(i.quantity)
 
             return render(request, "main/shoppingcart.html", {
                     "Item_id": order.products.all(),

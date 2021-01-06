@@ -130,7 +130,6 @@ $(document).ready(function() {
 }*/
 
 /* Recalculate cart */
-
 function recalculateCart(onlyTotal) {
   var subtotal = 0;
 
@@ -204,10 +203,3 @@ function removeItem(removeButton) {
   });
 }
 
-function showDiv(divId, element)
-{
-    document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
-    if(element.value==1) {
-        recalculateCart();
-    }
-}
