@@ -314,6 +314,41 @@ footer{
     color:rgba(255, 255, 255, 0.493);
 }
 
+
+
+#container-booking{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(19, 1fr);
+    justify-items: stretch;
+    align-items: stretch;
+    height: 550px;
+    width: 70%;
+    margin-left: 15%;
+    
+}
+
+.box{
+    border: 1px solid rgba(250, 178, 178, 0.24);
+    height: 28px;
+    text-align: center;
+    line-height: 22px;
+}
+
+.time-slot{
+    background: rgba(153, 99, 97, 0.863);
+    cursor: pointer;
+}
+
+.time-name, .day-name{
+    border: 1px solid black;
+}
+
+.useless{
+    background-color: black;
+}
+
+
 @media all and (max-width:1000px){
     .best-sellers-grid{
         grid-template-columns: repeat(3, 1fr);
@@ -338,7 +373,167 @@ footer{
     }
 }
 
+<<<<<<< HEAD
+=======
 
-#hidden_div {
-    display: none !important;
+/*Form Booking*/
+.container {
+	max-width:400px;
+	width:100%;
+	margin:0 auto;
+    position: absolute;
+    top: 100px;
+    left: 35%;
+    display: none;
 }
+
+.close-container{
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#contact {
+	background:#F9F9F9;
+	padding:25px;
+	margin:50px 0;
+}
+
+#contact h3 {
+	color: #F96;
+	display: block;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+#contact h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+
+fieldset {
+	border: medium none !important;
+	margin: 0 0 10px;
+	min-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
+	width:100%;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
+
+#contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+
+#contact textarea {
+	height:100px;
+	max-width:100%;
+    resize:none;
+}
+
+#contact button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:rgba(250, 206, 204, 0.863);
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	font-size:15px;
+}
+
+#contact button[type="submit"]:hover {
+	background:rgba(153, 99, 97, 0.863);
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#contact input:focus, #contact textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+::-webkit-input-placeholder {
+ color:#888;
+}
+:-moz-placeholder {
+ color:#888;
+}
+::-moz-placeholder {
+ color:#888;
+}
+:-ms-input-placeholder {
+ color:#888;
+}
+
+/*Button Booking*/
+.send-booking-request{
+    margin-left: 43%;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: inherit;
+    font-family: inherit;
+    margin-bottom: 50px;
+}
+button.send-booking-request {
+    font-weight: 600;
+    color: #382b22;
+    text-transform: uppercase;
+    padding: 1.25em 2em;
+    background: #fff0f0;
+    border: 2px solid #b18597;
+    border-radius: 0.75em;
+    transform-style: preserve-3d;
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+button.send-booking-request::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f9c4d2;
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+button.send-booking-request:hover {
+    background: #ffe9e9;
+    transform: translate(0, 0.25em);
+}
+button.send-booking-request:hover::before {
+    box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+    transform: translate3d(0, 0.5em, -1em);
+}
+button.send-booking-request:active {
+    background: #ffe9e9;
+    transform: translate(0em, 0.75em);
+}
+button.send-booking-request:active::before {
+    box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+    transform: translate3d(0, 0, -1em);
+}
+>>>>>>> origin/booking

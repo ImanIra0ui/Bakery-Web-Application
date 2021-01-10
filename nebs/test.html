@@ -10,6 +10,51 @@
   <link rel="stylesheet" href="style.css">
   <title>Shopping Cart</title>
   
+  <script>
+    function recalculateCart2(onlyTotal) {
+  var subtotal = 0;
+
+  /* Sum up row totals */
+  $('.basket-product').each(function() {
+    subtotal += parseFloat($(this).children('.subtotal').text());
+  });
+
+  /* Calculate totals */
+  var total = subtotal+15;
+
+  /*If switch for update only total, update only total display*/
+  if (onlyTotal) {
+    /* Update total display */
+    $('.total-value').fadeOut(fadeTime, function() {
+      $('#basket-total').html(total.toFixed(2));
+      $('.total-value').fadeIn(fadeTime);
+    });
+  } else {
+    /* Update summary display. */
+    $('.final-value').fadeOut(fadeTime, function() {
+      $('#basket-subtotal').html(subtotal.toFixed(2));
+      $('#basket-total').html(total.toFixed(2));
+      if (total == 0) {
+        $('.checkout-cta').fadeOut(fadeTime);
+      } else {
+        $('.checkout-cta').fadeIn(fadeTime);
+      }
+      $('.final-value').fadeIn(fadeTime);
+    });
+  }
+}
+    function showDiv(divId, element)
+  {
+      document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
+      if(element.value==1) {
+         recalculateCart2();
+      }
+      else {
+        recalculateCart();
+      }
+  }
+    </script>
+  <script src="{% static shop.js %}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
@@ -93,16 +138,17 @@
           <div class="subtotal-title">Subtotal</div>
           <div class="subtotal-value final-value" id="basket-subtotal">{{ total }}</div>
         </div>
-        <div class="summary-delivery">
-          <select id="test" name="form_select" onchange="showDiv('hidden_div', this)" class="summary-delivery-selection">
-          <!--<select id="myselect" name="delivery-collection">-->
-              <option value="0" selected="selected">Select Pickup or Delivery</option>
-             <option value="2">Pickup</option>
-             <option value="1">Delivery</option>
-          </select>
-        </div>
+        
+        <form method="POST" action="{% url 'shoppingcart:confirm' %}">
+          <div class="summary-delivery">
+            <select id="test" name="form_select" onchange="showDiv('hidden_div', this)" class="summary-delivery-selection">
+            <!--<select id="myselect" name="delivery-collection">-->
+                <option value="0" selected="selected">Select Pickup or Delivery</option>
+               <option value="2">Pickup</option>
+               <option value="1">Delivery</option>
+            </select>
+          </div>
         <div class="client-info">
-            <form method="POST" action="{% url 'shoppingcart:confirm' %}">
               {% csrf_token %}
                 <label for="fname">First name:</label>
                 <input class="txt" type="text" id="fname" name="fname" required><br><br>
@@ -110,9 +156,9 @@
                 <input class="txt" type="text" id="lname" name="lname" required><br><br>
                 <label for="number">Phone number:</label>
                 <input class="txt" type="text" id="number" name="number" required><br><br>
-                <div id="hidden_div">
-                <label for="address">Address: </label>
-                <input class="txt" type="text" id="address" name="address" required><br><br>
+                <div id="hidden_div" style="display:none;">
+                <label for="address" >Address: </label>
+                <input class="txt" type="text" id="address" name="address" value=" " required><br><br>
                 <div class="summary-subtotal">
                     <div class="subtotal-title">Delivery charge</div>
                     <div class="subtotal-value final-value"> 15</div>
@@ -121,6 +167,7 @@
                 <div class="summary-total">
                     <div class="total-title">Total</div>
                     <div class="total-value final-value" id="basket-total">{{ total }}</div>
+                    <input type="number" value='{{ total }}' name="ttl">
                   </div>
                 <div class="summary-checkout">
                     <input type="submit" value="Confirm Order" class="checkout-cta">
