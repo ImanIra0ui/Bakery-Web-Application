@@ -83,7 +83,14 @@
                     <li class="item-image"><img src="{% static item.picture|cut:'main/static' %}" alt="" srcset=""></li>
                     <div class="item-name">{{item.name}}</div>
                     <div class="item-price">{{item.price}}</div>
-                    <button class="btn">Add to Cart</button>
+                    <form method="POST" action="{% url 'shoppingcart:index' %}">
+                        <!-- <input type="text" value ='{{ item.id }}'>-->
+                        {% csrf_token %}
+                        <input type="hidden" name="product" value='{{ item.id }}'>
+                        <!--{{ form }}-->
+                     <input type ="submit" class="btn btn-display" value="Add to Cart"></input>
+                     </form>
+                   
                 </div>
                 {% endfor %}
             </div>
