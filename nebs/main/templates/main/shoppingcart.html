@@ -6,53 +6,13 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="{% static 'shopping.css' %}">
+  
+  
+  <link rel="stylesheet" href="/static/shopping.css? {% now "U" %}"/> 
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <title>Shopping Cart</title>
-  <script>
-    function recalculateCart2(onlyTotal) {
-  var subtotal = 0;
-
-  /* Sum up row totals */
-  $('.basket-product').each(function() {
-    subtotal += parseFloat($(this).children('.subtotal').text());
-  });
-
-  /* Calculate totals */
-  var total = subtotal+15;
-
-  /*If switch for update only total, update only total display*/
-  if (onlyTotal) {
-    /* Update total display */
-    $('.total-value').fadeOut(fadeTime, function() {
-      $('#basket-total').html(total.toFixed(2));
-      $('.total-value').fadeIn(fadeTime);
-    });
-  } else {
-    /* Update summary display. */
-    $('.final-value').fadeOut(fadeTime, function() {
-      $('#basket-subtotal').html(subtotal.toFixed(2));
-      $('#basket-total').html(total.toFixed(2));
-      if (total == 0) {
-        $('.checkout-cta').fadeOut(fadeTime);
-      } else {
-        $('.checkout-cta').fadeIn(fadeTime);
-      }
-      $('.final-value').fadeIn(fadeTime);
-    });
-  }
-}
-    function showDiv(divId, element)
-  {
-      document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
-      if(element.value==1) {
-         recalculateCart2();
-      }
-      else {
-        recalculateCart();
-      }
-  }
-    </script>
+  
+ 
   <script src="{% static shop.js %}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
@@ -157,7 +117,7 @@
                 <input class="txt" type="text" id="number" name="number" required><br><br>
                 <div id="hidden_div" style="display:none;">
                 <label for="address" >Address: </label>
-                <input class="txt" type="text" id="address" name="address" value=" " required><br><br>
+                <input class="txt" id="address" name="address" value=" " type="text" required><br><br>
                 <div class="summary-subtotal">
                     <div class="subtotal-title">Delivery charge</div>
                     <div class="subtotal-value final-value"> 15</div>
@@ -166,7 +126,7 @@
                 <div class="summary-total">
                     <div class="total-title">Total</div>
                     <div class="total-value final-value" id="basket-total">{{ total }}</div>
-                    <input type="number" value='{{ total }}' name="ttl">
+                    <input type="hidden" value='{{ total }}' name="ttl">
                   </div>
                 <div class="summary-checkout">
                     <input type="submit" value="Confirm Order" class="checkout-cta">

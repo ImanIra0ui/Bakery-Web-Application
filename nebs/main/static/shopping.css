@@ -416,7 +416,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .txt {
-    border: 50px solid #555;
+    border: 1.5px solid #555;
 }
 
 @media screen and (min-width: 900px) and (max-width: 960px) {
@@ -444,4 +444,8 @@ input[type=number]::-webkit-inner-spin-button {
   .basket{
       margin-bottom: 10px;
   }
+}
+
+#hidden_div {
+  display: none;
 }
