@@ -12,7 +12,7 @@ def cancel(modeladmin, request, queryset):
     queryset.update(STATUS='Canceled')
 
 def make_sold(modeladmin, request, queryset):
-    queryset.update(STATUS='Selled')
+    queryset.update(STATUS='Sold')
     print(queryset)
     now=datetime.datetime.now()
     tmp=0
@@ -63,7 +63,7 @@ make_sold.short_description = "SELL"
 
 @admin.register(Order) 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("client", "date_ordered", "STATUS")
+    list_display = ("client", "date_ordered", "STATUS","is_ordered")
     list_filter = ("date_ordered",)
     actions = [make_sold,cancel]
     

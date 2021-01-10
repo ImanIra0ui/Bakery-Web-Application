@@ -28,7 +28,7 @@ class OrderItem(models.Model):
 class Order (models.Model):
     STATUS = (('Pending', 'Pending'),
               ('Canceled', 'Canceled'),
-              ('Selled', 'Selled')
+              ('Sold', 'Sold')
     )
     client = models.ForeignKey(client, on_delete=models.CASCADE, null=True)    
     is_ordered = models.BooleanField(default=False)
@@ -53,7 +53,7 @@ class transaction (models.Model):
     def get_total_revenues(self):
         Total=0
         for element in self.Orders.all():
-            if(element.date_ordered==date and STATUS=='Selled'):
+            if(element.date_ordered==date and STATUS=='Sold'):
                 for qnt in element.products.all():
                    sum+=qnt.cal_subtotal
         return Total
