@@ -78,54 +78,14 @@
             <div class="line"></div>
             <p class = "offers-paragraph">Eating raw fish didn't sound like a good idea. "It's a delicacy in Japan," didn't seem to make it any more appetizing. Raw fish is raw fish, delicacy or not.</p>
             <div class="best-sellers-grid">
+                {%for item in list %}
                 <div class="card">
-                    <img src="{% static '/imgs/test.png' %}" class="food-best">
-                    <div class="item-name">Brunch</div>
-                    <div class="item-price">30DHS</div>
+                    <li class="item-image"><img src="{% static item.picture|cut:'main/static' %}" alt="" srcset=""></li>
+                    <div class="item-name">{{item.name}}</div>
+                    <div class="item-price">{{item.price}}</div>
                     <button class="btn">Add to Cart</button>
                 </div>
-                <div class="card">
-                    <img src="{% static '/imgs/test.png' %}" class="food-best">
-                    <div class="item-name">Brunch</div>
-                    <div class="item-price">30DHS</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-                <div class="card">
-                    <img src="{% static '/imgs/test.png' %}" class="food-best">
-                    <div class="item-name">Brunch</div>
-                    <div class="item-price">30DHS</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-                <div class="card">
-                    <img src="{% static '/imgs/test.png' %}" class="food-best">
-                    <div class="item-name">Cookies</div>
-                    <div class="item-price">20DHS</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-                <div class="card">
-                    <img src="{% static '/imgs/test.png' %}" class="food-best">
-                    <div class="item-name">Milkshake</div>
-                    <div class="item-price">25DHS</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-                <div class="card">
-                    <img src="{% static '/imgs/test.png' %}" class="food-best">
-                    <div class="item-name">Mini Burgers</div>
-                    <div class="item-price">35DHS</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-                <div class="card">
-                    <img src="{% static '/imgs/test.png' %}" class="food-best">
-                    <div class="item-name">Bread</div>
-                    <div class="item-price">7DHS</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-                <div class="card">
-                    <img src="{% static '/imgs/test.png' %}" class="food-best">
-                    <div class="item-name">Macarons</div>
-                    <div class="item-price">50DHS</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
+                {% endfor %}
             </div>
     </div>
     <div class="info">
