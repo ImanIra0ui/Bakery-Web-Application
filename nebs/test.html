@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="shopping.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Shopping Cart</title>
+  
+  <script>
+    function recalculateCart2(onlyTotal) {
+  var subtotal = 0;
+
+  /* Sum up row totals */
+  $('.basket-product').each(function() {
+    subtotal += parseFloat($(this).children('.subtotal').text());
+  });
+
+  /* Calculate totals */
+  var total = subtotal+15;
+
+  /*If switch for update only total, update only total display*/
+  if (onlyTotal) {
+    /* Update total display */
+    $('.total-value').fadeOut(fadeTime, function() {
+      $('#basket-total').html(total.toFixed(2));
+      $('.total-value').fadeIn(fadeTime);
+    });
+  } else {
+    /* Update summary display. */
+    $('.final-value').fadeOut(fadeTime, function() {
+      $('#basket-subtotal').html(subtotal.toFixed(2));
+      $('#basket-total').html(total.toFixed(2));
+      if (total == 0) {
+        $('.checkout-cta').fadeOut(fadeTime);
+      } else {
+        $('.checkout-cta').fadeIn(fadeTime);
+      }
+      $('.final-value').fadeIn(fadeTime);
+    });
+  }
+}
+    function showDiv(divId, element)
+  {
+      document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
+      if(element.value==1) {
+         recalculateCart2();
+      }
+      else {
+        recalculateCart();
+      }
+  }
+    </script>
+  <script src="{% static shop.js %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<div class="top-bar">
+  <a href="{% url 'index' %}">
+  <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+  </a>
+  <nav class="navbar">
+      <ul class="navbar-nav">
+          <li class="nav-link"><a href="{% url 'display' cat='Bread'%}">BREAD</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Cake'%}">CAKES</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">PASTRY</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}">COOKIES</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MOROCCAN</a></li>
+          <li class=" nav-link-icons">
+              <li class="nav-link"><a href="#" target="">
+                  <div class="search-box">
+                      <form action="/search" method="get">
+                          <input class="search-txt" type="search" name="query" id = "query" placeholder="Type to Search">
+                          <button type = "submit" class="search-btn"><i class="fas fa-search search-box-icon"></i></button>
+                      </form>
+                  </div>
+              </a></li>
+              <li class="nav-link"><a href="{% url 'shoppingcart:index' %}" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
+          </li>
+      </ul>
+  </nav>
+</div>
+
+<body>
+  <main>
+      
+    <div class = "shopping-title">
+        SHOPPING CART
+    </div>
+
+    <div class="basket">
+      <div class="basket-labels">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Price</li>
+          <li class="quantity">Quantity</li>
+          <li class="subtotal">Subtotal</li>
+        </ul>
+      </div>
+      {% for Id in Item_id %}
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="{% static Id.item.picture|cut:'main/static' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame" srcset="">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">{{ Id.quantity }}</span> x </strong>  {{ Id.item.name }} </h1>
+            <p><strong>{{ Id.item.description }}</strong></p>
+            <p>{{ Id.item.category }}</p>
+          </div>
+        </div>
+        <div class="price">{{ Id.item.price }}</div>
+        <div class="quantity">
+          <button class="buttonsub">
+            -
+          </button>
+          <input type="number" id="MEH" value="{{ Id.quantity }}" min="1" class="quantity-field">
+          <button class="buttonadd">
+            +
+          </button>
+        </div>
+        <div class="subtotal">{{ Id.subtotal }}</div>
+        <div class="remove">
+          <button>Remove</button>
+        </div>
+      </div>
+      {% empty %}
+      <li> No items. </li>
+      {% endfor %}
+    </div>
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">{{ total }}</div>
+        </div>
+        
+        <form method="POST" action="{% url 'shoppingcart:confirm' %}">
+          <div class="summary-delivery">
+            <select id="test" name="form_select" onchange="showDiv('hidden_div', this)" class="summary-delivery-selection">
+            <!--<select id="myselect" name="delivery-collection">-->
+                <option value="0" selected="selected">Select Pickup or Delivery</option>
+               <option value="2">Pickup</option>
+               <option value="1">Delivery</option>
+            </select>
+          </div>
+        <div class="client-info">
+              {% csrf_token %}
+                <label for="fname">First name:</label>
+                <input class="txt" type="text" id="fname" name="fname" required><br><br>
+                <label for="lname">Last name:</label>
+                <input class="txt" type="text" id="lname" name="lname" required><br><br>
+                <label for="number">Phone number:</label>
+                <input class="txt" type="text" id="number" name="number" required><br><br>
+                <div id="hidden_div" style="display:none;">
+                <label for="address" >Address: </label>
+                <input class="txt" type="text" id="address" name="address" value=" " required><br><br>
+                <div class="summary-subtotal">
+                    <div class="subtotal-title">Delivery charge</div>
+                    <div class="subtotal-value final-value"> 15</div>
+                  </div>
+                </div>
+                <div class="summary-total">
+                    <div class="total-title">Total</div>
+                    <div class="total-value final-value" id="basket-total">{{ total }}</div>
+                    <input type="number" value='{{ total }}' name="ttl">
+                  </div>
+                <div class="summary-checkout">
+                    <input type="submit" value="Confirm Order" class="checkout-cta">
+            </div>
+            </form>
+        </div>        
+      </div>
+    </aside>
+  </main>
+  
+  <script src="{% static 'shop.js' %}"></script>
+</body>
+
+<div class="info">
+    <div class="info-item">
+        <i class="far fa-2x fa-clock"></i>
+        <h3>HOURS OF OPERATION</h2>
+        <span>Mon to Fri: 8:00am - 6:00pm</span>
+        <span>Sat to Sun: 8:00am - 1:00pm</span>
+    </div>
+    <div class="info-item">
+        <i class="fas fa-2x fa-map-marked-alt"></i>
+        <h3>OUR LOCATION</h2>
+        <span>1234 First Avenue</span>
+        <span>New Haven, CT 06509</span>
+    </div>
+    <div class="info-item">
+        <i class="fas fa-2x fa-mobile-alt"></i>
+        <h3>GET IN TOUCH</h2>
+        <span>Phone #: 203-123-6789</span>
+        <span>Email: contact@backery.com</span>
+    </div>
+</div>
+
+<footer>© Nebs Bakery 2020</footer>
+
+</html>

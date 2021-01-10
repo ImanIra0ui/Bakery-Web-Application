@@ -1,34 +1,46 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="{% static 'shopping.css' %}">
+  
+  
+  <link rel="stylesheet" href="/static/shopping.css? {% now "U" %}"/> 
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <title>Shopping Cart</title>
-  <script src="{% static 'shop.js' %}"></script>
+  
+ 
+  <script src="{% static shop.js %}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
 <div class="top-bar">
-    <img src="{% static '/imgs/logo-png.png' %}" class="logo">
-    <nav class="navbar">
-        <ul class="navbar-nav">
-            <li class="nav-link"><a href="{% url 'display' cat='Bread'%}" target="_blank">BREAD</a></li>
-            <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" target="_blank">CAKES</a></li>
-            <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}" target="_blank">PASTRY</a></li>
-            <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" target="_blank">COOKIES</a></li>
-            <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}" target="_blank">MOROCCAN</a></li>
-            <li class=" nav-link-icons">
-                <li class="nav-link"><a href="#" target="_blank"><i class="fas fa-search"></i></a></li>
-                <li class="nav-link"><a href="{% url 'shoppingcart:index' %}" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
-            </li>
-        </ul>
-    </nav>
+  <a href="{% url 'index' %}">
+  <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+  </a>
+  <nav class="navbar">
+      <ul class="navbar-nav">
+          <li class="nav-link"><a href="{% url 'display' cat='Bread'%}">BREAD</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Cake'%}">CAKES</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">PASTRY</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}">COOKIES</a></li>
+          <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MOROCCAN</a></li>
+          <li class=" nav-link-icons">
+              <li class="nav-link"><a href="#" target="">
+                  <div class="search-box">
+                      <form action="/search" method="get">
+                          <input class="search-txt" type="search" name="query" id = "query" placeholder="Type to Search">
+                          <button type = "submit" class="search-btn"><i class="fas fa-search search-box-icon"></i></button>
+                      </form>
+                  </div>
+              </a></li>
+              <li class="nav-link"><a href="{% url 'shoppingcart:index' %}" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
+          </li>
+      </ul>
+  </nav>
 </div>
 
 <body>
@@ -47,92 +59,74 @@
           <li class="subtotal">Subtotal</li>
         </ul>
       </div>
+      {% for Id in Item_id %}
       <div class="basket-product">
         <div class="item">
           <div class="product-image">
-            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
+            <img src="{% static Id.item.picture|cut:'main/static' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame" srcset="">
           </div>
           <div class="product-details">
-            <h1><strong><span class="item-quantity">4</span> x Eliza J</strong> Lace Sleeve Cuff Dress</h1>
-            <p><strong>Navy, Size 18</strong></p>
-            <p>Product Code - 232321939</p>
+            <h1><strong><span class="item-quantity">{{ Id.quantity }}</span> x </strong>  {{ Id.item.name }} </h1>
+            <p><strong>{{ Id.item.description }}</strong></p>
+            <p>{{ Id.item.category }}</p>
           </div>
         </div>
-        <div class="price">26.00</div>
+        <div class="price">{{ Id.item.price }}</div>
         <div class="quantity">
-          <input type="number" value="4" min="1" class="quantity-field">
+          <button class="buttonsub">
+            -
+          </button>
+          <input type="number" id="MEH" value="{{ Id.quantity }}" min="1" class="quantity-field">
+          <button class="buttonadd">
+            +
+          </button>
         </div>
-        <div class="subtotal">104.00</div>
+        <div class="subtotal">{{ Id.subtotal }}</div>
         <div class="remove">
           <button>Remove</button>
         </div>
       </div>
-      <div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
-            <p><strong>Navy, Size 10</strong></p>
-            <p>Product Code - 232321939</p>
-          </div>
-        </div>
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
-        </div>
-        <div class="subtotal">26.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-      </div>
-      <div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="{% static '/imgs/test.png' %}" alt="Placholder Image 2" width="120" height="120" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
-            <p><strong>Navy, Size 10</strong></p>
-            <p>Product Code - 232321939</p>
-          </div>
-        </div>
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
-        </div>
-        <div class="subtotal">26.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-      </div>
+      {% empty %}
+      <li> No items. </li>
+      {% endfor %}
     </div>
     <aside>
       <div class="summary">
         <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
         <div class="summary-subtotal">
           <div class="subtotal-title">Subtotal</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">{{ total }}</div>
         </div>
-        <div class="summary-delivery">
-          <select name="delivery-collection" class="summary-delivery-selection">
-              <option value="0" selected="selected">Select Collection or Delivery</option>
-             <option value="collection">Collection</option>
-             <option value="delivery">Delivery</option>
-          </select>
-        </div>
+        
+        <form method="POST" action="{% url 'shoppingcart:confirm' %}">
+          <div class="summary-delivery">
+            <select id="test" name="form_select" onchange="showDiv('hidden_div', this)" class="summary-delivery-selection">
+            <!--<select id="myselect" name="delivery-collection">-->
+                <option value="0" selected="selected">Select Pickup or Delivery</option>
+               <option value="2">Pickup</option>
+               <option value="1">Delivery</option>
+            </select>
+          </div>
         <div class="client-info">
-            <form>
+              {% csrf_token %}
                 <label for="fname">First name:</label>
-                <input type="text" id="fname" name="fname"><br><br>
+                <input class="txt" type="text" id="fname" name="fname" required><br><br>
                 <label for="lname">Last name:</label>
-                <input type="text" id="lname" name="lname"><br><br>
+                <input class="txt" type="text" id="lname" name="lname" required><br><br>
                 <label for="number">Phone number:</label>
-                <input type="text" id="number" name="number"><br><br>
+                <input class="txt" type="text" id="number" name="number" required><br><br>
+                <div id="hidden_div" style="display:none;">
+                <label for="address" >Address: </label>
+                <input class="txt" id="address" name="address" value=" " type="text" required><br><br>
+                <div class="summary-subtotal">
+                    <div class="subtotal-title">Delivery charge</div>
+                    <div class="subtotal-value final-value"> 15</div>
+                  </div>
+                </div>
                 <div class="summary-total">
                     <div class="total-title">Total</div>
-                    <div class="total-value final-value" id="basket-total">130.00</div>
+                    <div class="total-value final-value" id="basket-total">{{ total }}</div>
+                    <input type="hidden" value='{{ total }}' name="ttl">
                   </div>
                 <div class="summary-checkout">
                     <input type="submit" value="Confirm Order" class="checkout-cta">

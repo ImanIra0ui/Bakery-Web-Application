@@ -10,14 +10,16 @@
 </head>
 <body>
     <div class="top-bar">
-        <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+        <a href="{% url 'index' %}">
+            <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+        </a>
         <nav class="navbar">
             <ul class="navbar-nav">
-                <li class="nav-link"><a href="{% url 'display' cat='Bread'%}" target="_blank">BREAD</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" target="_blank">CAKES</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}" target="_blank">PASTRY</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" target="_blank">COOKIES</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}" target="_blank">MOROCCAN</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Bread'%}">BREAD</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Cake'%}">CAKES</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">PASTRY</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}">COOKIES</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MOROCCAN</a></li>
                 <li class=" nav-link-icons">
                     <li class="nav-link"><a href="#" target="">
                         <div class="search-box">
@@ -50,7 +52,13 @@
                 <li class="item-name">{{ item.name }}</li>
                 <li class="item-price">{{ item.price }}</li>
                 <li class="item-description">{{ item.description }}</li>
-                <button class="btn btn-display">Add to Cart</button>
+                <form method="POST" action="{% url 'shoppingcart:index' %}">
+                   <!-- <input type="text" value ='{{ item.id }}'>-->
+                   {% csrf_token %}
+                   <input type="hidden" name="product" value='{{ item.id }}'>
+                   <!--{{ form }}-->
+                <input type ="submit" class="btn btn-display" value="Add to Cart"></input>
+                </form>
             </ul>
             {% endfor %}
         </div>

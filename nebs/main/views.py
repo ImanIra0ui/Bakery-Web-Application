@@ -46,3 +46,4 @@ def offers(request):
 def greet(request, name):
     return HttpResponse(f"Hello, {name}!")
 
+

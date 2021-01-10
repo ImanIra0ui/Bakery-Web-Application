@@ -53,3 +53,4 @@ sortDropdown.addEventListener('change', ()=>{
         }
     }
 });
+

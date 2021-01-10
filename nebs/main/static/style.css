@@ -11,7 +11,6 @@ html{
     background-color: #f1dfd1;
 }
 
-
 .top-bar{
     padding: 20px 15px;
     width: 100%;
@@ -374,6 +373,8 @@ footer{
     }
 }
 
+<<<<<<< HEAD
+=======
 
 /*Form Booking*/
 .container {
@@ -535,3 +536,4 @@ button.send-booking-request:active::before {
     box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
     transform: translate3d(0, 0, -1em);
 }
+>>>>>>> origin/booking
