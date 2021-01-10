@@ -28,8 +28,9 @@ def index(request):
 
 def display(request, cat):  
     #Get all Items from DB and Filter it based on category
+    cate = cat
     all_items = Item.objects.filter(category = cat)
-    return render(request, "main/display.html", {'Items' : all_items})
+    return render(request, "main/display.html", {'Items' : all_items, "Cat" : cate})
   
 def search(request):
     query = request.GET['query']
