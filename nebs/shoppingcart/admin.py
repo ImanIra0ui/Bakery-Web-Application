@@ -5,9 +5,6 @@ from django.contrib import admin
 from .models import *
 import datetime
 
-
-
-admin.site.register(OrderItem)
 def cancel(modeladmin, request, queryset):
     queryset.update(STATUS='Canceled')
 

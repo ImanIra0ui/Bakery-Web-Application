@@ -12,7 +12,7 @@ def confirm (request):
     if not request.session.session_key:
         request.session.save()
 
-    order_qs = Order.objects.filter(session=request.session.session_key+"1", is_ordered=False)
+    order_qs = Order.objects.filter(OrderNumber=request.session.session_key+"1", is_ordered=False)
 
     if order_qs.exists():
         order = order_qs[0]   
@@ -46,11 +46,11 @@ def confirm (request):
             now = datetime.now()
             now1 = now.strftime("%m/%d/%Y, %H:%M:%S")
 
-            order.session = now1 + request.session.session_key+"1"
+            order.OrderNumber = now1 + request.session.session_key+"1"
             order.save()
 
             for i in order.products.all():
-                i. session = request.session.session_key+ "1" + now1,
+                i. OrderNumber = request.session.session_key+ "1" + now1,
                 i.is_ordered = True
                 i.save()
             
@@ -77,13 +77,13 @@ def index(request):
     if not request.session.session_key:
         request.session.save()
 
-    order_qs = Order.objects.filter(session=request.session.session_key+"1", is_ordered=False)
+    order_qs = Order.objects.filter(OrderNumber=request.session.session_key+"1", is_ordered=False)
 
     if order_qs.exists():
         order = order_qs[0]
 
     else:
-        order = Order.objects.create(session=request.session.session_key+"1")
+        order = Order.objects.create(OrderNumber=request.session.session_key+"1")
 
     if request.method=="POST":
         Item_id = request.POST['product']
@@ -91,10 +91,10 @@ def index(request):
         #order_item = Item.objects.get(id=Item_id)
         order_item, created = OrderItem.objects.get_or_create(
             item=item,
-            session = request.session.session_key+"1",
+            OrderNumber = request.session.session_key+"1",
             is_ordered= False
         )
-        order_qs = Order.objects.filter(session=request.session.session_key+"1", is_ordered=False)
+        order_qs = Order.objects.filter(OrderNumber=request.session.session_key+"1", is_ordered=False)
         
         if order_qs.exists():
             order = order_qs[0]
@@ -108,7 +108,7 @@ def index(request):
                 order.save()
 
         else:
-            order = Order.objects.create(session=request.session.session_key+"1")
+            order = Order.objects.create(OrderNumber=request.session.session_key+"1")
             order.products.add(order_item__id)
             order.save()
 
@@ -125,7 +125,7 @@ def index(request):
 
     else:
 
-        order_qs = Order.objects.filter(session=request.session.session_key+"1", is_ordered=False)
+        order_qs = Order.objects.filter(OrderNumber=request.session.session_key+"1", is_ordered=False)
 
 
         if order_qs.exists():
