@@ -27,3 +27,18 @@ class Item(models.Model):
     def __str__(self):
         return self.category+ ': ' + self.name
 
+
+#How a booking will look like
+class Booking(models.Model):
+    #Add status
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=100)
+    day = models.CharField(max_length=100)
+    time = models.CharField(max_length=100)
+    description = models.CharField(max_length = 250)
+    def __str__(self):
+        return self.name+ ': ' + self.day + " " + self.time
+
+
+

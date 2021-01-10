@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="top-bar">
+        <img src="{% static '/imgs/logo-png.png' %}" class="logo">
+        <nav class="navbar">
+            <ul class="navbar-nav">
+                <li class="nav-link"><a href="{% url 'display' cat='Bread'%}" target="_blank">BREAD</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" target="_blank">CAKES</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}" target="_blank">PASTRY</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" target="_blank">COOKIES</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}" target="_blank">MOROCCAN</a></li>
+                <li class=" nav-link-icons">
+                    <li class="nav-link"><a href="#" target="">
+                        <div class="search-box">
+                            <form action="/search" method="get">
+                                <input class="search-txt" type="search" name="query" id = "query" placeholder="Type to Search">
+                                <button type = "submit" class="search-btn"><i class="fas fa-search search-box-icon"></i></button>
+                            </form>
+                        </div>
+                    </a></li>
+                    <li class="nav-link"><a href="{% url 'shoppingcart:index' %}" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--Grid Code Goes Here-->
+    <main id = "container-booking"></main>
+    <button class="send-booking-request">Send Request</button>
+
+    <!--Popup Form Starts Here-->
+    <div class="container">
+        <form id="contact" action="" method="post">
+          {% csrf_token %}
+          <i class="fas fa-times close-container"></i>
+          <h3>Make Booking Request</h3>
+          <h4>Contact us today, and get reply with in 24 hours!</h4>
+          <fieldset>
+            <input placeholder="Your name" type="text" tabindex="1" name = "name" required autofocus>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Your Email Address" type="email" name = "email"  tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Your Phone Number" type="tel" tabindex="3" name = "phone" pattern="[0-9]{10}" required>
+            <small>Format: 0634567890</small>
+          </fieldset>
+          <fieldset>
+            <div class="request-booking">
+                <select required class="booking-time-dropdown" tabindex="4" name = "time" >
+                    <option disabled selected hidden value="">Select Time:</option>
+                    <option value="6AM">6:00AM</option>
+                    <option value="7AM">7:00AM</option>
+                    <option value="8AM">8:00AM</option>
+                    <option value="9AM">9:00AM</option>
+                    <option value="10AM">10:00AM</option>
+                    <option value="11AM">11:00AM</option>
+                    <option value="12AM">12:00AM</option>
+                    <option value="1PM">1:00PM</option>
+                    <option value="2PM">2:00PM</option>
+                    <option value="3PM">3:00PM</option>
+                    <option value="4PM">4:00PM</option>
+                    <option value="5PM">5:00PM</option>
+                    <option value="6PM">6:00PM</option>
+                    <option value="7PM">7:00PM</option>
+                    <option value="8PM">8:00PM</option>
+                    <option value="9PM">9:00PM</option>
+                    <option value="10PM">10:00PM</option>
+                    <option value="11PM">11:00PM</option>
+                </select>
+            </div>
+          </fieldset>
+          <fieldset>
+            <div class="request-booking">
+                <select required class="booking-day-dropdown" tabindex="5" name = "day" >
+                    <option disabled selected hidden value="">Select Day:</option>
+                    <option value="Lundi">Lundi</option>
+                    <option value="Mardi">Mardi</option>
+                    <option value="Mercredi">Mercredi</option>
+                    <option value="Jeudi">Jeudi</option>
+                    <option value="Vendredi">Vendredi</option>
+                    <option value="Samedi">Samedi</option>
+                    <option value="Dimanche">Dimanche</option>
+                </select>
+            </div>
+          </fieldset>
+          <fieldset>
+            <textarea placeholder="Type your Message Here...." tabindex="6" name = "description"  required></textarea>
+          </fieldset>
+          <fieldset>
+            <button name="submit" type="submit" id="booking-submit" data-submit="...Sending">Submit</button>
+          </fieldset>
+        </form>  
+    </div>
+    <!--Popup Form Ends Here-->
+    {% for message in messages %}
+    <script>alert("{{ message }}");</script>
+    {% endfor %}
+    
+    <div class="info">
+        <div class="info-item">
+            <i class="far fa-2x fa-clock"></i>
+            <h3>HOURS OF OPERATION</h2>
+            <span>Mon to Fri: 8:00am - 6:00pm</span>
+            <span>Sat to Sun: 8:00am - 1:00pm</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-2x fa-map-marked-alt"></i>
+            <h3>OUR LOCATION</h2>
+            <span>1234 First Avenue</span>
+            <span>New Haven, CT 06509</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-2x fa-mobile-alt"></i>
+            <h3>GET IN TOUCH</h2>
+            <span>Phone #: 203-123-6789</span>
+            <span>Email: contact@backery.com</span>
+        </div>
+    </div>
+    <footer>© Nebs Bakery 2020</footer>
+    <script src="{% static 'booking.js' %}"></script>
+    <script> 
+        window.onload = function(){
+            let data = JSON.parse("{{data|escapejs}}"); 
+            console.log(data);
+            let len = data.length
+            for(i = 0; i < len; i++){
+                str = "."+data[i].fields.day +"-"+ data[i].fields.time;
+                console.log(str);
+                timeSlot = document.querySelector(str);
+                timeSlot.style.backgroundColor = "red";
+            }
+        }
+    </script>
+</body>
+</html>
