@@ -10,7 +10,7 @@
   
   <link rel="stylesheet" href="/static/shopping.css? {% now "U" %}"/> 
   <link rel="stylesheet" href="{% static 'style.css' %}">
-  <title>Shopping Cart</title>
+  <title>Panier</title>
   
  
   <script src="{% static shop.js %}"></script>
@@ -32,7 +32,7 @@
               <li class="nav-link"><a href="#" target="">
                   <div class="search-box">
                       <form action="/search" method="get">
-                          <input class="search-txt" type="search" name="query" id = "query" placeholder="Type to Search">
+                          <input class="search-txt" type="search" name="query" id = "query" placeholder="Recherche">
                           <button type = "submit" class="search-btn"><i class="fas fa-search search-box-icon"></i></button>
                       </form>
                   </div>
@@ -47,16 +47,16 @@
   <main>
       
     <div class = "shopping-title">
-        SHOPPING CART
+        MON PANIER
     </div>
 
     <div class="basket">
       <div class="basket-labels">
         <ul>
-          <li class="item item-heading">Item</li>
-          <li class="price">Price</li>
-          <li class="quantity">Quantity</li>
-          <li class="subtotal">Subtotal</li>
+          <li class="item item-heading">Produit</li>
+          <li class="price">Prix</li>
+          <li class="quantity">Quantité</li>
+          <li class="subtotal">Sous-total</li>
         </ul>
       </div>
       {% for Id in Item_id %}
@@ -83,18 +83,18 @@
         </div>
         <div class="subtotal">{{ Id.subtotal }}</div>
         <div class="remove">
-          <button>Remove</button>
+          <button>Supprimer</button>
         </div>
       </div>
       {% empty %}
-      <li> No items. </li>
+      <li class= "none"> Oops, le panier est vide. </li>
       {% endfor %}
     </div>
     <aside>
       <div class="summary">
-        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+        <div class="summary-total-items"><span class="total-items"></span> Produits dans mon panier </div>
         <div class="summary-subtotal">
-          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-title">Sous-total</div>
           <div class="subtotal-value final-value" id="basket-subtotal">{{ total }}</div>
         </div>
         
@@ -102,22 +102,22 @@
           <div class="summary-delivery">
             <select id="test" name="form_select" onchange="showDiv('hidden_div', this)" class="summary-delivery-selection">
             <!--<select id="myselect" name="delivery-collection">-->
-                <option value="0" selected="selected">Select Pickup or Delivery</option>
-               <option value="2">Pickup</option>
-               <option value="1">Delivery</option>
+                <option value="0" selected="selected">Selectionner retrait en magasin ou livraison</option>
+               <option value="2">Retrait en magasin</option>
+               <option value="1">Frais de livraison</option>
             </select>
           </div>
         <div class="client-info">
               {% csrf_token %}
-                <label for="fname">First name:</label>
+                <label for="fname">Prénom:</label>
                 <input class="txt" type="text" id="fname" name="fname" required><br><br>
-                <label for="lname">Last name:</label>
+                <label for="lname">Nom:</label>
                 <input class="txt" type="text" id="lname" name="lname" required><br><br>
-                <label for="number">Phone number:</label>
+                <label for="number">Numéro de téléphone:</label>
                 <input class="txt" type="text" id="number" name="number" required><br><br>
                 <div id="hidden_div" style="display:none;">
-                <label for="address" >Address: </label>
-                <input class="txt" id="address" name="address" value=" " type="text" required><br><br>
+                <label for="address" >Addresse: </label>
+                <input placeholder="Addresse" class="txt" id="address" name="address" value=" " type="text" required><br><br>
                 <div class="summary-subtotal">
                     <div class="subtotal-title">Delivery charge</div>
                     <div class="subtotal-value final-value"> 15</div>
@@ -129,7 +129,7 @@
                     <input type="hidden" value='{{ total }}' name="ttl">
                   </div>
                 <div class="summary-checkout">
-                    <input type="submit" value="Confirm Order" class="checkout-cta">
+                    <input type="submit" value="Confirmer la commande" class="checkout-cta">
             </div>
             </form>
         </div>        
@@ -143,21 +143,21 @@
 <div class="info">
     <div class="info-item">
         <i class="far fa-2x fa-clock"></i>
-        <h3>HOURS OF OPERATION</h2>
-        <span>Mon to Fri: 8:00am - 6:00pm</span>
-        <span>Sat to Sun: 8:00am - 1:00pm</span>
-    </div>
-    <div class="info-item">
-        <i class="fas fa-2x fa-map-marked-alt"></i>
-        <h3>OUR LOCATION</h2>
-        <span>1234 First Avenue</span>
-        <span>New Haven, CT 06509</span>
-    </div>
-    <div class="info-item">
-        <i class="fas fa-2x fa-mobile-alt"></i>
-        <h3>GET IN TOUCH</h2>
-        <span>Phone #: 203-123-6789</span>
-        <span>Email: contact@backery.com</span>
+        <h3>HEURES D'OPÉRATION </h2>
+          <span>Lundi au Mercredi: 8:00am - 6:00pm</span>
+          <span>Samedi et Dimanche: 8:00am - 1:00pm</span>
+      </div>
+      <div class="info-item">
+          <i class="fas fa-2x fa-map-marked-alt"></i>
+          <h3>NOTRE MAGASIN</h2>
+          <span>1234 First Avenue</span>
+          <span>New Haven, CT 06509</span>
+      </div>
+      <div class="info-item">
+          <i class="fas fa-2x fa-mobile-alt"></i>
+          <h3>CONTACTEZ-NOUS</h2>
+          <span>Numéro de téléphone #: 203-123-6789</span>
+          <span>Email: contact@backery.com</span>
     </div>
 </div>
 

@@ -25,7 +25,7 @@
                     <li class="nav-link"><a href="#" target="">
                         <div class="search-box">
                             <form action="/search" method="get">
-                                <input class="search-txt" type="search" name="query" id = "query" placeholder="Type to Search">
+                                <input class="search-txt" type="search" name="query" id = "query" placeholder="Recherche">
                                 <button type = "submit" class="search-btn"><i class="fas fa-search search-box-icon"></i></button>
                             </form>
                         </div>
@@ -58,7 +58,7 @@
                    {% csrf_token %}
                    <input type="hidden" name="product" value='{{ item.id }}'>
                    <!--{{ form }}-->
-                <input type ="submit" class="btn btn-display" value="Add to Cart"></input>
+                <input type ="submit" class="btn btn-display" value="Ajouter au panier"></input>
                 </form>
             </ul>
             {% endfor %}
@@ -69,21 +69,21 @@
     <div class="info">
         <div class="info-item">
             <i class="far fa-2x fa-clock"></i>
-            <h3>HOURS OF OPERATION</h2>
-            <span>Mon to Fri: 8:00am - 6:00pm</span>
-            <span>Sat to Sun: 8:00am - 1:00pm</span>
-        </div>
-        <div class="info-item">
-            <i class="fas fa-2x fa-map-marked-alt"></i>
-            <h3>OUR LOCATION</h2>
-            <span>1234 First Avenue</span>
-            <span>New Haven, CT 06509</span>
-        </div>
-        <div class="info-item">
-            <i class="fas fa-2x fa-mobile-alt"></i>
-            <h3>GET IN TOUCH</h2>
-            <span>Phone #: 203-123-6789</span>
-            <span>Email: contact@backery.com</span>
+            <h3>HEURES D'OPÉRATION </h2>
+                <span>Lundi au Mercredi: 8:00am - 6:00pm</span>
+                <span>Samedi et Dimanche: 8:00am - 1:00pm</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-2x fa-map-marked-alt"></i>
+                <h3>NOTRE MAGASIN</h2>
+                <span>1234 First Avenue</span>
+                <span>New Haven, CT 06509</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-2x fa-mobile-alt"></i>
+                <h3>CONTACTEZ-NOUS</h2>
+                <span>Numéro de téléphone #: 203-123-6789</span>
+                <span>Email: contact@backery.com</span>
         </div>
     </div>
     <footer>© Nebs Bakery 2020</footer>
