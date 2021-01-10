@@ -447,15 +447,16 @@ fieldset {
 	cursor:pointer;
 	width:100%;
 	border:none;
-	background:rgba(250, 206, 204, 0.863);
+    background-color: #f1dfd1;
 	color:#FFF;
 	margin:0 0 5px;
 	padding:10px;
-	font-size:15px;
+    font-size:15px;
 }
 
 #contact button[type="submit"]:hover {
-	background:rgba(153, 99, 97, 0.863);
+	color: rgba(245, 151, 148, 0.863);
+    background-color: whitesmoke;
 	-webkit-transition:background 0.3s ease-in-out;
 	-moz-transition:background 0.3s ease-in-out;
 	transition:background-color 0.3s ease-in-out;
@@ -520,6 +521,31 @@ button.send-booking-request::before {
     transform: translate3d(0, 0.75em, -1em);
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
 }
+
+.request-booking {
+    cursor: pointer;
+    background-color: f1dfd1;
+    /*border: 1px solid #aaa;*/
+    border-radius: 4px;
+    display: flex;
+    font-size: 0.625rem;
+    height: 34px;
+    width: 100%;
+}
+
+.txt {
+    border: 0 none;
+    outline: 0 none;
+    float: left;
+    border: 1.5px solid #555;
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
 button.send-booking-request:hover {
     background: #ffe9e9;
     transform: translate(0, 0.25em);
