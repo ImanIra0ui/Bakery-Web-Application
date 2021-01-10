@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 #How a product will look like
-class Item(models.Model):
+class Item (models.Model):
     CATEGORY = (
         ('Cake', 'Cake'),
         ('Bread', 'Bread'),
@@ -29,7 +29,7 @@ class Item(models.Model):
 
 
 #How a booking will look like
-class Booking(models.Model):
+class Booking (models.Model):
     #Add status
     name = models.CharField(max_length=100)
     email = models.EmailField()
