@@ -8,16 +8,30 @@ class client (models.Model):
     FirstName = models.CharField(max_length=120)
     LastName = models.CharField(max_length=120)
     Number = models.IntegerField()
+    Address = models.CharField(max_length=500)
 
     def __str__(self):
         return self.FirstName + ' ' + self.LastName
 
 
-class order (models.Model):
+class OrderItem(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
+    quantity = models.IntegerField(default=1)
+    session = models.CharField(max_length = 2000)
+    is_ordered = models.BooleanField(default=False)
+    subtotal = models.FloatField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} of {self.item.name} : {self.subtotal}"
+
+class Order (models.Model):
     client = models.ForeignKey(client, on_delete=models.CASCADE, null=True)    
     is_ordered = models.BooleanField(default=False)
-    products = models.ManyToManyField(Item)
+    products = models.ManyToManyField(OrderItem)
     date_ordered = models.DateTimeField(auto_now=True)
+    session = models.CharField(max_length = 2000)
+    delivery = models.BooleanField(default=False)
+    total = models.FloatField(default=0)
 
     def __str__(self):
         return '{0} - {1}'.format(self.client, self.date_ordered)

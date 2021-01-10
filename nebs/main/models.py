@@ -21,7 +21,8 @@ class Item(models.Model):
         choices = CATEGORY
     )
     sold_qty = models.IntegerField()
-    available_qty = models.IntegerField()  
+    available_qty = models.IntegerField()
+    #quantity = models.IntegerField()
 
     def __str__(self):
         return self.category+ ': ' + self.name

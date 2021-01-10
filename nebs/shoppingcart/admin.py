@@ -6,4 +6,4 @@ from .models import *
 
 #registering Item 
 admin.site.register(client)
-admin.site.register(order)
+admin.site.register(Order)
