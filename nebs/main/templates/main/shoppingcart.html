@@ -10,6 +10,8 @@
   
   <link rel="stylesheet" href="/static/shopping.css? {% now "U" %}"/> 
   <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
   <title>Panier</title>
   
  
@@ -23,11 +25,11 @@
   </a>
   <nav class="navbar">
       <ul class="navbar-nav">
-          <li class="nav-link"><a href="{% url 'display' cat='Bread'%}">BREAD</a></li>
-          <li class="nav-link"><a href="{% url 'display' cat='Cake'%}">CAKES</a></li>
-          <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">PASTRY</a></li>
-          <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}">COOKIES</a></li>
-          <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MOROCCAN</a></li>
+        <li class="nav-link "><a href="{% url 'display' cat='Bread'%}" >TARTES</a></li>
+        <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" >GATEAUX</a></li>
+        <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">VIENNOISERIE</a></li>
+        <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" >DÉJEUNER</a></li>
+        <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MAROCAIN</a></li>
           <li class=" nav-link-icons">
               <li class="nav-link"><a href="#" target="">
                   <div class="search-box">

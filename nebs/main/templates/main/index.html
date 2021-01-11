@@ -3,9 +3,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Gruppo&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@300&display=swap" rel="stylesheet">    
     <title>Neb's Bakery</title>
     <link rel="icon" href="{% static '/imgs/logo-png.png' %}">
 </head>
@@ -16,11 +23,11 @@
         </a>
         <nav class="navbar">
             <ul class="navbar-nav">
-                <li class="nav-link"><a href="{% url 'display' cat='Bread'%}" >BREAD</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" >CAKES</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">PASTRY</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" >COOKIES</a></li>
-                <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MOROCCAN</a></li>
+                <li class="nav-link "><a href="{% url 'display' cat='Bread'%}" >TARTES</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Cake'%}" >GATEAUX</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Pastry'%}">VIENNOISERIE</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Cookies'%}" >DÉJEUNER</a></li>
+                <li class="nav-link"><a href="{% url 'display' cat='Moroccan'%}">MAROCAIN</a></li>
                 <li class=" nav-link-icons">
                     <li class="nav-link"><a href="#" target="">
                         <div class="search-box">
@@ -41,27 +48,35 @@
     </div>
 
     <div class="categories-3">
-        <div class="first-cat">
-            <img src="{% static 'imgs/special-cakes.jpg' %}" class="pic-cat">
-            <div class="cat-text">
-                <h2>Make Booking</h2>
-                <p>Eating raw fish didn't sound like a good idea. "It's a delicacy in Japan," didn't seem to make it any more appetizing. Raw fish is raw fish, delicacy or not.</p>
+        <a href="{% url 'booking' %}" target="_blank">
+            <div class="first-cat res-cat">
+                <img src="{% static 'imgs/special-cakes.jpg' %}" class="pic-cat">
+                <div class="cat-text">
+                    <h2>Faire une Reservation</h2>
+                    <p>Vous avez la possibilité de réserver votre espace anniversaire chez Nebs.</p>
+                </div>
             </div>
-        </div>
-        <div class="second-cat">
-            <img src="{% static 'imgs/breakfast.jpg' %}" class="pic-cat">
-            <div class="cat-text">
-                <h2>Brunch</h2>
-                <p>Eating raw fish didn't sound like a good idea. "It's a delicacy in Japan," didn't seem to make it any more appetizing. Raw fish is raw fish, delicacy or not.</p>
+        </a>
+        <a href="{% url 'display' cat='Pastry'%}">
+            <div class="second-cat">
+                <img src="{% static 'imgs/c-2.jpg' %}" class="pic-cat">
+                <div class="cat-text">
+                    <h2>Nos Viennoiseries</h2>
+                    <p>Découvrez nos meilleures viennoiseries. Stars du petit-déjeuner ou de la pause gourmande.</p>
+                </div>
             </div>
-        </div>
-        <div class="third-cat">
-            <img src="{% static 'imgs/bread.jpg' %}" class="pic-cat">
-            <div class="cat-text">
-                <h2>Daily Items</h2>
-                <p>Eating raw fish didn't sound like a good idea. "It's a delicacy in Japan," didn't seem to make it any more appetizing. Raw fish is raw fish, delicacy or not.</p>
+        </a>
+        
+        <a href="{% url 'display' cat='Cookies'%}" >
+            <div class="third-cat">
+                <img src="{% static 'imgs/burger.jpg' %}" class="pic-cat">
+                <div class="cat-text">
+                    <h2>Nos Plats</h2>
+                    <p>Découvrez nos meilleures recettes pour un repas en famille.</p>
+                </div>
             </div>
-        </div>
+        </a>
+        
     </div>
 
     <div class="custom-shape-divider-bottom-1607388473">
@@ -74,10 +89,10 @@
 
     <div class="best-sellers-container">
         <div class="best-sellers">
-            <h3>best deals for you</h3>
-            <h2>CUPS OF CUTENESS</h2>
+            <h3>Nos meilleures ventes</h3>
+            <h2 class = "fancy-text">Nebs Special</h2>
             <div class="line"></div>
-            <p class = "offers-paragraph">Eating raw fish didn't sound like a good idea. "It's a delicacy in Japan," didn't seem to make it any more appetizing. Raw fish is raw fish, delicacy or not.</p>
+            <p class = "offers-paragraph">Les meilleures ventes. Nos produits les plus populaires selon les ventes. Mises à jour chaque mois.</p>
             <div class="best-sellers-grid">
                 {%for item in list %}
                 <div class="card">
@@ -106,14 +121,14 @@
             <div class="info-item">
                 <i class="fas fa-2x fa-map-marked-alt"></i>
                 <h3>NOTRE MAGASIN</h2>
-                <span>1234 First Avenue</span>
-                <span>New Haven, CT 06509</span>
+                <span>Av Med V Operation Al Quds</span>
+                <span>Imm. C2 Mag N improvement 2, Kenitra</span>
             </div>
             <div class="info-item">
                 <i class="fas fa-2x fa-mobile-alt"></i>
                 <h3>CONTACTEZ-NOUS</h2>
-                <span>Numéro de téléphone #: 203-123-6789</span>
-                <span>Email: contact@backery.com</span>
+                <span>Numéro de téléphone #: 06 62 05 42 44</span>
+                <span>Email: nebs@gmail.com</span>
         </div>
     </div>
     <footer>© Nebs Bakery 2020</footer>
